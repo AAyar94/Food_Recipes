@@ -3,8 +3,8 @@ package com.aayar94.foodrecipes.util
 import androidx.recyclerview.widget.DiffUtil
 
 class RecipesDiffUtil(
-    private val oldList: List<com.aayar94.foodrecipes.models.Result>,
-    private val newList: List<com.aayar94.foodrecipes.models.Result>
+    private val oldList: List<com.aayar94.foodrecipes.model.Result>,
+    private val newList: List<com.aayar94.foodrecipes.model.Result>
 ) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldList.size

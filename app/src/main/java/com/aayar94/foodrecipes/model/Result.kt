@@ -1,4 +1,4 @@
-package com.aayar94.foodrecipes.models
+package com.aayar94.foodrecipes.model
 
 import com.google.gson.annotations.SerializedName
 

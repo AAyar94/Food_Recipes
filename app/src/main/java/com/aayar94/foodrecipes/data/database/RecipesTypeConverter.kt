@@ -1,7 +1,7 @@
 package com.aayar94.foodrecipes.data.database
 
 import androidx.room.TypeConverter
-import com.aayar94.foodrecipes.models.FoodRecipe
+import com.aayar94.foodrecipes.model.FoodRecipe
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

@@ -1,6 +1,6 @@
 package com.aayar94.foodrecipes.data.network
 
-import com.aayar94.foodrecipes.models.FoodRecipe
+import com.aayar94.foodrecipes.model.FoodRecipe
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 

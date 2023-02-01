@@ -6,12 +6,16 @@
     app:startDestination="@id/recipesFragment">
     <fragment
         android:id="@+id/recipesFragment"
-        android:name="com.aayar94.foodrecipes.ui.fragment.recipes.recipesFragment"
+        android:name="com.aayar94.foodrecipes.ui.fragment.recipes.RecipesFragment"
         android:label="Recipes"
         tools:layout="@layout/fragment_recipes" >
         <action
             android:id="@+id/action_recipesFragment_to_recipesBottomSheet"
             app:destination="@id/recipesBottomSheet" />
+        <argument
+            android:name="backFromBottomSheet"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"

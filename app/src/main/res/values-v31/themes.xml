@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.FoodRecipes" parent="Theme.Material3.DynamicColors.DayNight">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/material_dynamic_primary40</item>
+        <item name="colorPrimaryVariant">@color/material_dynamic_primary80</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/material_dynamic_secondary40</item>
+        <item name="colorSecondaryVariant">@color/material_dynamic_secondary80</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:windowLightStatusBar">?isLightTheme</item>
+        <item name="android:windowLightNavigationBar">?isLightTheme</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="CustomChipM3" parent="Widget.Material3.Chip.Filter"/>
+    <style name="CustomButton" parent="Widget.Material3.Button.TonalButton"/>
+</resources>

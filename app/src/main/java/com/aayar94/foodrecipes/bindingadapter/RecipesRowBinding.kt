@@ -1,4 +1,4 @@
-package com.aayar94.foodrecipes.bindingadapters
+package com.aayar94.foodrecipes.bindingadapter
 
 import android.view.View
 import android.widget.ImageView

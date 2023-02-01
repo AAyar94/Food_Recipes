@@ -18,5 +18,6 @@
     <color name="yellow">#FFC114</color>
     <color name="green">#00C980</color>
 
-    <color name="text_color">#242424</color>
+
+    <color name="text_color">#FFFFFF</color>
 </resources>

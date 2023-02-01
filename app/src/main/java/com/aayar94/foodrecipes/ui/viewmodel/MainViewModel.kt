@@ -1,4 +1,4 @@
-package com.aayar94.foodrecipes.viewmodels
+package com.aayar94.foodrecipes.ui.viewmodel
 
 import android.app.Application
 import android.content.Context
@@ -7,7 +7,7 @@ import android.net.NetworkCapabilities
 import androidx.lifecycle.*
 import com.aayar94.foodrecipes.data.Repository
 import com.aayar94.foodrecipes.data.database.RecipesEntity
-import com.aayar94.foodrecipes.models.FoodRecipe
+import com.aayar94.foodrecipes.model.FoodRecipe
 import com.aayar94.foodrecipes.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

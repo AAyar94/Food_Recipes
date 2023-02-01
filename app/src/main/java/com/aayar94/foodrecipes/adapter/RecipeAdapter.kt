@@ -1,19 +1,19 @@
-package com.aayar94.foodrecipes.adapters
+package com.aayar94.foodrecipes.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.aayar94.foodrecipes.databinding.RecipesRowLayoutBinding
-import com.aayar94.foodrecipes.models.FoodRecipe
+import com.aayar94.foodrecipes.model.FoodRecipe
 import com.aayar94.foodrecipes.util.RecipesDiffUtil
 
 class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.MyViewHolder>() {
-    private var recipes = emptyList<com.aayar94.foodrecipes.models.Result>()
+    private var recipes = emptyList<com.aayar94.foodrecipes.model.Result>()
 
     class MyViewHolder(private val binding: RecipesRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(result: com.aayar94.foodrecipes.models.Result) {
+        fun bind(result: com.aayar94.foodrecipes.model.Result) {
             binding.result = result
             binding.executePendingBindings()
         }
