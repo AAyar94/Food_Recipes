@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
+import com.aayar94.foodrecipes.R
 import com.aayar94.foodrecipes.databinding.FragmentRecipesBottomSheetBinding
 import com.aayar94.foodrecipes.ui.viewmodel.RecipesViewModel
 import com.aayar94.foodrecipes.util.Constants.Companion.DEFAULT_DIET_TYPE
@@ -21,12 +22,13 @@ import java.util.*
 class RecipesBottomSheet : BottomSheetDialogFragment() {
     private var _binding: FragmentRecipesBottomSheetBinding? = null
     private val binding get() = _binding!!
-
     private lateinit var recipesViewModel: RecipesViewModel
+
     private var mealTypeChip = DEFAULT_MEAL_TYPE
     private var mealTypeChipId = 0
     private var dietTypeChip = DEFAULT_DIET_TYPE
     private var dietTypeChipId = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         recipesViewModel = ViewModelProvider(requireActivity()).get(RecipesViewModel::class.java)
@@ -36,10 +38,8 @@ class RecipesBottomSheet : BottomSheetDialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        val binding = FragmentRecipesBottomSheetBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
-
+        _binding = FragmentRecipesBottomSheetBinding.inflate(layoutInflater,container,false)
 
         recipesViewModel.readMealAndDietType.asLiveData().observe(viewLifecycleOwner) { value ->
             mealTypeChip = value.selectedMealType
@@ -64,7 +64,10 @@ class RecipesBottomSheet : BottomSheetDialogFragment() {
 
         binding.applyBtn.setOnClickListener {
             recipesViewModel.saveMealAndDietType(
-                mealTypeChip, mealTypeChipId, dietTypeChip, dietTypeChipId
+                mealTypeChip,
+                mealTypeChipId,
+                dietTypeChip,
+                dietTypeChipId
             )
             val action =
                 RecipesBottomSheetDirections.actionRecipesBottomSheetToRecipesFragment(true)
@@ -78,15 +81,10 @@ class RecipesBottomSheet : BottomSheetDialogFragment() {
         if (chipId != 0) {
             try {
                 chipGroup.findViewById<Chip>(chipId).isChecked = true
-
-            } catch (e: java.lang.Exception) {
-                Log.d("RecipeBottomSheet", e.message.toString())
+            } catch (e: Exception) {
+                Log.d("RecipesBottomSheet", e.message.toString())
             }
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
 }

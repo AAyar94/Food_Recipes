@@ -30,4 +30,5 @@
     <string name="main_course">Main Course</string>
     <string name="meal_type">Meal Type</string>
     <string name="whole30">whole 30</string>
+    <string name="search">Search</string>
 </resources>
