@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Theme.FoodRecipes" parent="Theme.Material3.DynamicColors.DayNight">
         <!-- Primary brand color. -->
@@ -16,6 +16,26 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="CustomChipM3" parent="Widget.Material3.Chip.Filter"/>
-    <style name="CustomButton" parent="Widget.Material3.Button.TonalButton"/>
+    <style name="CustomChipM3" parent="Widget.Material3.Chip.Filter" />
+
+    <style name="CustomButton" parent="Widget.Material3.Button.TonalButton" />
+
+    <style name="DetailsActivityTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/material_dynamic_primary40</item>
+        <item name="colorPrimaryVariant">@color/material_dynamic_primary80</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:windowLightStatusBar">?isLightTheme</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">?isLightTheme</item>
+    </style>
+
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="background">?attr/colorPrimary</item>
+        <item name="tabIndicator">@color/white</item>
+        <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabSelectedTextColor">@color/text_color</item>
+    </style>
+
+
 </resources>

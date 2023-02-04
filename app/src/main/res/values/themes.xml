@@ -14,4 +14,31 @@
 
     <style name="CustomButton" parent="Widget.Material3.Button.TonalButton" />
 
+    <style name="Theme.FoodRecipes.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.FoodRecipes.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.FoodRecipes.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="DetailsActivityTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimaryVariant">@color/purple_500</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+
+        <item name="android:windowLightStatusBar">?isLightTheme</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">?isLightTheme</item>
+    </style>
+
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="background">?attr/colorPrimary</item>
+        <item name="tabIndicator">@color/white</item>
+        <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabSelectedTextColor">@color/text_color</item>
+    </style>
+
 </resources>

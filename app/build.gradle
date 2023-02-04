@@ -4,6 +4,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'com.google.dagger.hilt.android'
 apply plugin: "org.jetbrains.kotlin.android"
+apply plugin: 'kotlin-parcelize'
 
 android {
     compileSdkVersion 33
@@ -17,8 +18,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    buildFeatures{
+    buildFeatures {
         dataBinding true
+        viewBinding true
     }
 
     buildTypes {
@@ -34,6 +36,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
 }
 kapt {
     correctErrorTypes true
