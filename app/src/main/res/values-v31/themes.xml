@@ -27,6 +27,7 @@
         <item name="colorControlNormal">@color/white</item>
         <item name="android:statusBarColor">?attr/colorPrimary</item>
         <item name="android:windowLightStatusBar">?isLightTheme</item>
+        <item name="android:homeAsUpIndicator">@drawable/back_button_image</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">?isLightTheme</item>
     </style>
 
