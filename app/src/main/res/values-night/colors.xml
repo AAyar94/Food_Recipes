@@ -20,4 +20,6 @@
 
 
     <color name="text_color">#FFFFFF</color>
+    <color name="strokeColor">#A2A2A2</color>
+    <color name="cardBackgroundColor">@color/white</color>
 </resources>

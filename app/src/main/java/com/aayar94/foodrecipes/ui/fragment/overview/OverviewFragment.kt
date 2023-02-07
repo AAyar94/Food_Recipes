@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import coil.load
 import com.aayar94.foodrecipes.R
 import com.aayar94.foodrecipes.databinding.FragmentOverviewBinding
+import com.aayar94.foodrecipes.util.Constants.Companion.RECIPE_KEY_RESULT
 import org.jsoup.Jsoup
 
 
@@ -25,7 +26,7 @@ class OverviewFragment : Fragment() {
         mbinding = FragmentOverviewBinding.inflate(layoutInflater)
 
         var args = arguments
-        var myBundle: com.aayar94.foodrecipes.model.Result? = args?.getParcelable("recipeBundle")
+        var myBundle: com.aayar94.foodrecipes.model.Result? = args?.getParcelable(RECIPE_KEY_RESULT)
         binding.mainImageView.load(myBundle?.image)
         binding.overviewTitleTextView.text = myBundle?.title
         binding.likeTextView.text = myBundle?.aggregateLikes.toString()

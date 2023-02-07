@@ -19,4 +19,6 @@
     <color name="green">#00C980</color>
 
     <color name="text_color">#242424</color>
+    <color name="strokeColor">#A2A2A2</color>
+    <color name="cardBackgroundColor">@color/white</color>
 </resources>
