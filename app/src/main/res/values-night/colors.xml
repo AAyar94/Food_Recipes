@@ -17,9 +17,11 @@
     <color name="red">#FF4646</color>
     <color name="yellow">#FFC114</color>
     <color name="green">#00C980</color>
+    <color name="DarkyWhite">#242424</color>
 
 
     <color name="text_color">#FFFFFF</color>
     <color name="strokeColor">#A2A2A2</color>
-    <color name="cardBackgroundColor">@color/white</color>
+    <color name="cardBackgroundColor">@color/DarkyWhite</color>
+    <color name="ingredientsBackground">#303030</color>
 </resources>

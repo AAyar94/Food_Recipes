@@ -23,4 +23,5 @@ class PagerAdapter(
     override fun getPageTitle(position: Int): CharSequence? {
         return title[position]
     }
+
 }

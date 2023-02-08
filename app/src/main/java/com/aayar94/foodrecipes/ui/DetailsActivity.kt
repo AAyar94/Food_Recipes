@@ -26,7 +26,7 @@ class DetailsActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         binding.toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.text_color))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val window = getWindow()
+        val window = window
         val color = SurfaceColors.SURFACE_2.getColor(applicationContext)
         window!!.statusBarColor = color // Set color of system statusBar same as ActionBar
         window.navigationBarColor =
@@ -42,6 +42,11 @@ class DetailsActivity : AppCompatActivity() {
         titles.add("Ingredients")
         titles.add("Instruction")
 
+        val iconsList = ArrayList<Int>()
+        iconsList.add(R.drawable.ic_view)
+        iconsList.add(R.drawable.ic_ingredients)
+        iconsList.add(R.drawable.ic_information)
+
 
         val resultBundle = Bundle()
         resultBundle.putParcelable("recipeBundle", args.result)
@@ -52,6 +57,8 @@ class DetailsActivity : AppCompatActivity() {
 
         binding.viewPager.adapter = adapter
         binding.tabLayout.setupWithViewPager(binding.viewPager)
+        binding.tabLayout.setTabIconTintResource(com.google.android.material.R.color.design_default_color_primary)
+        setupTabIcons()
 
         setContentView(binding.root)
     }
@@ -63,5 +70,12 @@ class DetailsActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun setupTabIcons() {
+        binding.tabLayout.getTabAt(0)?.setIcon(R.drawable.ic_view)
+        binding.tabLayout.getTabAt(1)?.setIcon(R.drawable.ic_ingredients)
+        binding.tabLayout.getTabAt(2)?.setIcon(R.drawable.ic_information)
+
+
+    }
 
 }
