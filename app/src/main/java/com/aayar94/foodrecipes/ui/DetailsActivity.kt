@@ -1,5 +1,6 @@
 package com.aayar94.foodrecipes.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +21,7 @@ class DetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailsBinding
 
+    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
@@ -30,7 +32,7 @@ class DetailsActivity : AppCompatActivity() {
         val color = SurfaceColors.SURFACE_2.getColor(applicationContext)
         window!!.statusBarColor = color // Set color of system statusBar same as ActionBar
         window.navigationBarColor =
-            color // Set color of system navigationBar same as BottomNavigationView
+            android.R.color.transparent // Set color of system navigationBar same as BottomNavigationView
 
         val fragments = ArrayList<Fragment>()
         fragments.add(OverviewFragment())
@@ -57,7 +59,7 @@ class DetailsActivity : AppCompatActivity() {
 
         binding.viewPager.adapter = adapter
         binding.tabLayout.setupWithViewPager(binding.viewPager)
-        binding.tabLayout.setTabIconTintResource(com.google.android.material.R.color.design_default_color_primary)
+        binding.tabLayout.setTabIconTintResource(R.color.primaryColorApp)
         setupTabIcons()
 
         setContentView(binding.root)

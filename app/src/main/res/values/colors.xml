@@ -23,4 +23,5 @@
     <color name="strokeColor">#A2A2A2</color>
     <color name="cardBackgroundColor">@color/DarkyWhite</color>
     <color name="ingredientsBackground">#E1E1E1</color>
+    <color name="primaryColorApp">@color/purple_500</color>
 </resources>

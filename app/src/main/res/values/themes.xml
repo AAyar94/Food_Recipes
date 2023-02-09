@@ -38,7 +38,7 @@
     <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
         <item name="background">?attr/colorPrimary</item>
         <item name="tabIndicator">@color/white</item>
-        <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabIndicatorHeight">5dp</item>
         <item name="tabSelectedTextColor">@color/text_color</item>
     </style>
 
