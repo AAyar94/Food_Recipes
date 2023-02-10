@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/recipesFragment">
+    app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/recipesFragment"
         android:name="com.aayar94.foodrecipes.ui.fragment.recipes.RecipesFragment"
@@ -48,4 +48,13 @@
             android:name="result"
             app:argType="com.aayar94.foodrecipes.model.Result" />
     </activity>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.aayar94.foodrecipes.ui.fragment.splash_fragment.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+    </fragment>
 </navigation>
