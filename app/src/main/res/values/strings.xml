@@ -42,4 +42,8 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="dairy_free">Dairy Free</string>
     <string name="healthy">Healthy</string>
+    <string name="with_this_app_you_can_find_over_than_5000_recipes">With this app you can find over than 5000 recipes...</string>
+    <string name="you_can_filter_recipes_as_you_want_like_vegan_vegetarian_drinks_snacks_etc">...you can filter recipes as you want,like vegan,vegetarian,drinks,snacks etc...</string>
+    <string name="and_you_can_easily_plan_you_meals">..and you can easily plan you meals</string>
+    <string name="finish">Finish</string>
 </resources>

@@ -24,4 +24,9 @@
     <color name="cardBackgroundColor">@color/DarkyWhite</color>
     <color name="ingredientsBackground">#E1E1E1</color>
     <color name="primaryColorApp">@color/purple_500</color>
+
+    <color name="splashBackground">#F8FFF8</color>
+    <color name="onBoardingFirst">#EACBFC</color>
+    <color name="onBoardingSecond">#FDF8A0</color>
+    <color name="onBoardingThird">#0B3CEA</color>
 </resources>

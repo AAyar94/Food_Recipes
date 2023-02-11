@@ -8,14 +8,14 @@
         android:id="@+id/recipesFragment"
         android:name="com.aayar94.foodrecipes.ui.fragment.recipes.RecipesFragment"
         android:label="Recipes"
-        tools:layout="@layout/fragment_recipes" >
+        tools:layout="@layout/fragment_recipes">
         <action
             android:id="@+id/action_recipesFragment_to_recipesBottomSheet"
             app:destination="@id/recipesBottomSheet" />
         <argument
             android:name="backFromBottomSheet"
-            app:argType="boolean"
-            android:defaultValue="false" />
+            android:defaultValue="false"
+            app:argType="boolean" />
         <action
             android:id="@+id/action_recipesFragment_to_detailsActivity"
             app:destination="@id/detailsActivity" />
@@ -34,7 +34,7 @@
         android:id="@+id/recipesBottomSheet"
         android:name="com.aayar94.foodrecipes.ui.fragment.recipes.bottom_sheet.RecipesBottomSheet"
         android:label="recipes_bottom_sheet"
-        tools:layout="@layout/fragment_recipes_bottom_sheet" >
+        tools:layout="@layout/fragment_recipes_bottom_sheet">
         <action
             android:id="@+id/action_recipesBottomSheet_to_recipesFragment"
             app:destination="@id/recipesFragment" />
@@ -43,7 +43,7 @@
         android:id="@+id/detailsActivity"
         android:name="com.aayar94.foodrecipes.ui.DetailsActivity"
         android:label="activity_details"
-        tools:layout="@layout/activity_details" >
+        tools:layout="@layout/activity_details">
         <argument
             android:name="result"
             app:argType="com.aayar94.foodrecipes.model.Result" />
@@ -52,9 +52,27 @@
         android:id="@+id/splashFragment"
         android:name="com.aayar94.foodrecipes.ui.fragment.splash_fragment.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        app:launchSingleTop="true"
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_recipesFragment"
-            app:destination="@id/recipesFragment" />
+            app:destination="@id/recipesFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.aayar94.foodrecipes.ui.fragment.onboarding.OnBoardingFragment"
+        android:label="OnboardingFragment">
+        <action
+            android:id="@+id/action_onboardingFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment"
+            app:popUpTo="@id/onboardingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

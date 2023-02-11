@@ -25,4 +25,9 @@
     <color name="cardBackgroundColor">@color/DarkyWhite</color>
     <color name="ingredientsBackground">#303030</color>
     <color name="primaryColorApp">@color/material_dynamic_primary40</color>
+
+    <color name="splashBackground">#000000</color>
+    <color name="onBoardingFirst">#EACBFC</color>
+    <color name="onBoardingSecond">#FDF8A0</color>
+    <color name="onBoardingThird">#0B3CEA</color>
 </resources>

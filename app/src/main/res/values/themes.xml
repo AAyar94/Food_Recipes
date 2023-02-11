@@ -42,4 +42,9 @@
         <item name="tabSelectedTextColor">@color/text_color</item>
     </style>
 
+    <style name="onBoardingFragmentStatusColor" parent="ThemeOverlay.MaterialComponents.Dark">
+        <item name="android:windowLightStatusBar">true</item>
+
+    </style>
+
 </resources>

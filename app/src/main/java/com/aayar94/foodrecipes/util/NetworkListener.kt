@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.aayar94.foodrecipes.util
 
 import android.content.Context
