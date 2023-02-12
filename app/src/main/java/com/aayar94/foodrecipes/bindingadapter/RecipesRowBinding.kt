@@ -56,7 +56,7 @@ class RecipesRowBinding {
         }
 
 
-        @BindingAdapter("appleVeganColor")
+        @BindingAdapter("applyVeganColor")
         @JvmStatic
         fun applyVeganColor(view: View, vegan: Boolean) {
             if (vegan) {
