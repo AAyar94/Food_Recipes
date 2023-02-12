@@ -6,8 +6,10 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 
+@ExperimentalCoroutinesApi
 class NetworkListener : ConnectivityManager.NetworkCallback() {
 
     private val isNetworkAvailable = MutableStateFlow(false)
@@ -33,7 +35,6 @@ class NetworkListener : ConnectivityManager.NetworkCallback() {
     }
 
     override fun onAvailable(network: Network) {
-        super.onAvailable(network)
         isNetworkAvailable.value = true
     }
 

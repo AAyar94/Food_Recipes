@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.aayar94.foodrecipes.databinding.FragmentOnboardingBinding
 import com.aayar94.foodrecipes.ui.fragment.onboarding.adapter.OnboardingViewPagerAdapter
@@ -18,10 +20,17 @@ class OnBoardingFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
-        requireActivity().window.setFlags(
+        /*requireActivity().window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        )
+        )*/
+
+
+        val windowInsetsController =
+            activity?.window?.let { WindowCompat.getInsetsController(it, activity?.window!!.decorView) }
+
+        windowInsetsController?.show(WindowInsetsCompat.Type.systemBars())
+
     }
 
     override fun onCreateView(
@@ -41,11 +50,6 @@ class OnBoardingFragment : Fragment() {
             lifecycle
         )
 
-
-        /*val windowInsetsController =
-            activity?.window?.let { WindowCompat.getInsetsController(it, activity?.window!!.decorView) }
-
-        windowInsetsController?.show(WindowInsetsCompat.Type.systemBars())*/
 
         binding.onBoardingFragmentViewPager.adapter = adapter
 

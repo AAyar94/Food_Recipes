@@ -26,8 +26,10 @@ import com.aayar94.foodrecipes.util.NetworkResult
 import com.aayar94.foodrecipes.util.observeOnce
 import com.google.android.material.elevation.SurfaceColors
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalCoroutinesApi::class)
 @AndroidEntryPoint
 class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
 
@@ -45,13 +47,13 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
         recipesViewModel = ViewModelProvider(requireActivity())[RecipesViewModel::class.java]
         networkListener = NetworkListener()
-        lifecycleScope.launch {
+        /*lifecycleScope.launch {
             networkListener.checkNetworkAvailability(requireContext())
                 .collect { status ->
                     Log.d("NetworkListener", status.toString())
                     recipesViewModel.showNetworkStatus()
                 }
-        }
+        }*/
     }
 
     override fun onCreateView(
@@ -72,6 +74,7 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
 
         setupRecyclerView()
         setupMenu()
+
         recipesViewModel.readBackOnline.observe(viewLifecycleOwner) {
             recipesViewModel.backOnline = it
         }
@@ -86,6 +89,8 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
                     readDatabase()
                 }
         }
+
+
 
         binding.recipesFab.setOnClickListener {
             if (recipesViewModel.networkStatus) {
@@ -221,14 +226,14 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        if(query != null) {
+        if (query != null) {
             searchApiData(query)
         }
         return true
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-    return false
+        return false
     }
 
 

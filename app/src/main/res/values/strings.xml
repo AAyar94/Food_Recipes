@@ -46,4 +46,5 @@
     <string name="you_can_filter_recipes_as_you_want_like_vegan_vegetarian_drinks_snacks_etc">...you can filter recipes as you want,like vegan,vegetarian,drinks,snacks etc...</string>
     <string name="and_you_can_easily_plan_you_meals">..and you can easily plan you meals</string>
     <string name="finish">Finish</string>
+    <string name="save_to_favorites">Save to favorites</string>
 </resources>
