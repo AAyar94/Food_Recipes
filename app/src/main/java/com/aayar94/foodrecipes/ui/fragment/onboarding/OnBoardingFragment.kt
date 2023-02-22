@@ -20,16 +20,16 @@ class OnBoardingFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
-        /*requireActivity().window.setFlags(
+        requireActivity().window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        )*/
+        )
 
 
-        val windowInsetsController =
+        /*val windowInsetsController =
             activity?.window?.let { WindowCompat.getInsetsController(it, activity?.window!!.decorView) }
 
-        windowInsetsController?.show(WindowInsetsCompat.Type.systemBars())
+        windowInsetsController?.show(WindowInsetsCompat.Type.systemBars())*/
 
     }
 

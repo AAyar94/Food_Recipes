@@ -1,6 +1,7 @@
 package com.aayar94.foodrecipes.ui.fragment.splash_fragment
 
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -35,6 +36,7 @@ class SplashFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_splash, container, false)
 
 
+
         return view
     }
 
@@ -43,23 +45,32 @@ class SplashFragment : Fragment() {
 
 
         lifecycleScope.launchWhenCreated {
-            /**Handler().postDelayed({
-            if (onBoardingFinished()) {
-            findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment)
-            } else {
-            findNavController().navigate(R.id.action_splashFragment_to_recipesFragment)
-            }
-            }, 500)*/
+            Handler().postDelayed({
+                if (onBoardingFinished()) {
+                    findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment)
+                } else {
+                    findNavController().navigate(R.id.action_splashFragment_to_recipesFragment)
+                }
+            }, timer())
 
-            goToRecipesFragment()
+            //goToRecipesFragment()
         }
 
+    }
+
+    private fun timer(): Long {
+        return if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.S) {
+            100
+        } else {
+            3000
+        }
     }
 
     private fun onBoardingFinished(): Boolean {
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         return sharedPref.getBoolean("Finished", false)
     }
+
 
     private fun goToRecipesFragment() {
         Handler().postDelayed(
@@ -69,6 +80,7 @@ class SplashFragment : Fragment() {
         )
 
     }
+
     override fun onStop() {
         super.onStop()
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
