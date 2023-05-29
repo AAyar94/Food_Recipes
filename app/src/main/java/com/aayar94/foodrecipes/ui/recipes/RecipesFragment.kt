@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.aayar94.foodrecipes.databinding.FragmentRecipesBinding
 import com.aayar94.foodrecipes.ui.MainViewModel
 import com.aayar94.foodrecipes.utils.NetworkResult
+import com.aayar94.foodrecipes.utils.observeOnce
 import com.google.android.material.elevation.SurfaceColors
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -51,7 +52,7 @@ class RecipesFragment : Fragment() {
 
     private fun readDatabase() {
         lifecycleScope.launch {
-            mainViewModel.readRecipe.observe(viewLifecycleOwner) { database ->
+            mainViewModel.readRecipe.observeOnce(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty()) {
                     adapter.setData(database[0].foodRecipe)
                     hideShimmerEffect()
