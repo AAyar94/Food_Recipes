@@ -36,6 +36,8 @@ class RecipesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         mBinding = FragmentRecipesBinding.inflate(layoutInflater, container, false)
+        binding.lifecycleOwner = this
+        binding.mainViewModel = mainViewModel
 
         windowColorSetter()
         setupRecyclerView()
@@ -52,7 +54,7 @@ class RecipesFragment : Fragment() {
 
     private fun readDatabase() {
         lifecycleScope.launch {
-            mainViewModel.readRecipe.observeOnce(viewLifecycleOwner) { database ->
+            mainViewModel.readRecipes.observeOnce(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty()) {
                     adapter.setData(database[0].foodRecipe)
                     hideShimmerEffect()
@@ -102,7 +104,7 @@ class RecipesFragment : Fragment() {
 
     private fun loadDataFromCache() {
         lifecycleScope.launch {
-            mainViewModel.readRecipe.observe(viewLifecycleOwner) { database ->
+            mainViewModel.readRecipes.observe(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty()) {
                     adapter.setData(database[0].foodRecipe)
                 }
@@ -118,5 +120,8 @@ class RecipesFragment : Fragment() {
         binding.shimmerRecyclerView.showShimmer()
     }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        mBinding = null
+    }
 }
