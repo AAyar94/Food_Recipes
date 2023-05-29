@@ -1,6 +1,7 @@
 package com.aayar94.foodrecipes.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -30,7 +31,20 @@ class MainActivity : AppCompatActivity() {
         )
         binding.bottomNavBar.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.landingBeginnerFragment -> binding.bottomNavBar.visibility = View.GONE
+                else -> binding.bottomNavBar.visibility = View.VISIBLE
+            }
+            when (destination.id) {
+                R.id.landingBeginnerFragment -> actionBar?.hide()
+                else -> actionBar?.show()
+            }
+        }
     }
+
+
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
