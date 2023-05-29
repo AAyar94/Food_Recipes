@@ -54,12 +54,13 @@ dependencies {
 
     // Room components
     implementation "androidx.room:room-runtime:2.5.1"
+    //noinspection KaptUsageInsteadOfKsp
     kapt "androidx.room:room-compiler:2.5.1"
     implementation "androidx.room:room-ktx:2.5.1"
     androidTestImplementation "androidx.room:room-testing:2.5.1"
 
     // Data binding
-    kapt "com.android.databinding:compiler:3.2.0-alpha10"
+    kapt "com.android.databinding:compiler:3.1.4"
     kapt "androidx.databinding:databinding-common:8.0.2"
 
     // DataStore
