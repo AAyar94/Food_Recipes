@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'kotlin-parcelize'
 
 android {
     namespace 'com.aayar94.foodrecipes'
@@ -20,6 +21,7 @@ android {
     buildFeatures {
         buildConfig true
         dataBinding true
+        viewBinding true
     }
     buildTypes {
         release {
@@ -98,6 +100,7 @@ dependencies {
 
     // Shimmer
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    implementation 'com.todkars:shimmer-recyclerview:0.4.1'
 
     // Jsoup
     implementation 'org.jsoup:jsoup:1.13.1'
