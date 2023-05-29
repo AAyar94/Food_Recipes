@@ -37,9 +37,9 @@
 
                 <ImageView
                     android:id="@+id/recipe_imageView"
+                    loadImageFromUrl="@{result.image}"
                     android:layout_width="200dp"
                     android:layout_height="0dp"
-                    loadImageFromUrl="@{result.image}"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -60,30 +60,30 @@
                     android:textColor="@color/darker"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    tools:text="@tools:sample/lorem"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/recipe_imageView"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Lorem Ipsum" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/description_textView"
+                    parseHtml="@{result.summary}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    tools:text="@tools:sample/lorem/random"
                     android:layout_marginTop="12dp"
                     android:ellipsize="end"
                     android:maxLines="3"
-                    android:text="@{result.summary}"
                     android:textColor="@color/darkGray"
                     app:layout_constraintEnd_toEndOf="@+id/title_textView"
                     app:layout_constraintStart_toStartOf="@+id/title_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/title_textView"
-                    tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+                    app:layout_constraintTop_toBottomOf="@+id/title_textView" />
 
                 <ImageView
                     android:id="@+id/heart_imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="36dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -104,12 +104,12 @@
                     android:textColor="@color/red"
                     app:layout_constraintStart_toStartOf="@+id/description_textView"
                     app:layout_constraintTop_toBottomOf="@+id/heart_imageView"
-                    tools:text="100" />
+                    tools:text="120" />
 
                 <ImageView
                     android:id="@+id/clock_imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     app:layout_constraintEnd_toEndOf="@+id/clock_textView"
                     app:layout_constraintStart_toStartOf="@+id/clock_textView"
                     app:layout_constraintTop_toTopOf="@+id/heart_imageView"
@@ -126,13 +126,13 @@
                     android:textColor="@color/yellow"
                     app:layout_constraintStart_toEndOf="@+id/heart_textView"
                     app:layout_constraintTop_toBottomOf="@+id/clock_imageView"
-                    tools:text="100" />
+                    tools:text="15 min" />
 
                 <ImageView
                     android:id="@+id/leaf_imageView"
                     applyVeganColor="@{result.vegan}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     app:layout_constraintEnd_toEndOf="@+id/leaf_textView"
                     app:layout_constraintStart_toStartOf="@+id/leaf_textView"
                     app:layout_constraintTop_toTopOf="@+id/clock_imageView"
@@ -144,10 +144,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
+                    android:text="@string/vegan"
                     android:textAlignment="center"
                     app:layout_constraintStart_toEndOf="@+id/clock_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/leaf_imageView"
-                    tools:text="Vegan" />
+                    app:layout_constraintTop_toBottomOf="@+id/leaf_imageView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aayar94.foodrecipes.databinding.FragmentRecipesBinding
 import com.aayar94.foodrecipes.ui.MainViewModel
-import com.aayar94.foodrecipes.utils.Constants.Companion.API_KEY
 import com.aayar94.foodrecipes.utils.NetworkResult
 import com.google.android.material.elevation.SurfaceColors
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,13 +19,21 @@ class RecipesFragment : Fragment() {
     private var mBinding: FragmentRecipesBinding? = null
     private val binding get() = mBinding!!
     private lateinit var mainViewModel: MainViewModel
+    private lateinit var recipesViewModel: RecipesViewModel
     private val adapter by lazy { RecipesAdapter() }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        recipesViewModel = ViewModelProvider(requireActivity())[RecipesViewModel::class.java]
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         mBinding = FragmentRecipesBinding.inflate(layoutInflater, container, false)
-        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+
         setupRecyclerView()
         requestAPIData()
         windowColorSetter()
@@ -44,7 +51,7 @@ class RecipesFragment : Fragment() {
 
     private fun requestAPIData() {
         mainViewModel.getRecipes(
-            applyQueries()
+            recipesViewModel.applyQueries()
         )
         mainViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
@@ -70,17 +77,6 @@ class RecipesFragment : Fragment() {
         }
     }
 
-    private fun applyQueries(): HashMap<String, String> {
-        val queries: HashMap<String, String> = HashMap()
-        queries["number"] = "50"
-        queries["apiKey"] = API_KEY
-        queries["type"] = "snack"
-        queries["diet"] = "vegan"
-        queries["addRecipeInformation"] = "true"
-        queries["fillIngredients"] = "true"
-
-        return queries
-    }
 
     private fun setupRecyclerView() {
         binding.shimmerRecyclerView.adapter = adapter
