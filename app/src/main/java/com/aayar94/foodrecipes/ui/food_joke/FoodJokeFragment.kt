@@ -1,4 +1,4 @@
-package com.aayar94.foodrecipes.ui
+package com.aayar94.foodrecipes.ui.food_joke
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

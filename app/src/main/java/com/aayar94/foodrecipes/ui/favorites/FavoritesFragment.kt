@@ -1,4 +1,4 @@
-package com.aayar94.foodrecipes.ui
+package com.aayar94.foodrecipes.ui.favorites
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
