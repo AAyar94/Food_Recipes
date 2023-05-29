@@ -2,7 +2,7 @@ package com.aayar94.foodrecipes.module
 
 import android.content.Context
 import androidx.room.Room
-import com.aayar94.foodrecipes.data.local.RecipesDatabase
+import com.aayar94.foodrecipes.data.local.database.RecipesDatabase
 import com.aayar94.foodrecipes.utils.Constants.Companion.DATABASE_NAME
 import dagger.Module
 import dagger.Provides

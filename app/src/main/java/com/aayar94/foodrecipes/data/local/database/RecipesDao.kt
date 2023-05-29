@@ -1,4 +1,4 @@
-package com.aayar94.foodrecipes.data.local
+package com.aayar94.foodrecipes.data.local.database
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -14,6 +14,6 @@ interface RecipesDao {
     suspend fun insertRecipes(recipesEntity: RecipesEntity)
 
     @Query("SELECT * FROM recipes_table ORDER BY id ASC")
-    suspend fun readRecipes(): Flow<List<RecipesEntity>>
+    fun readRecipes(): Flow<List<RecipesEntity>>
 
 }

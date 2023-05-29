@@ -1,4 +1,4 @@
-package com.aayar94.foodrecipes.data.local
+package com.aayar94.foodrecipes.data.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
