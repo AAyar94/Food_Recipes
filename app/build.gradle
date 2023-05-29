@@ -5,6 +5,9 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-parcelize'
 
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
 android {
     namespace 'com.aayar94.foodrecipes'
     compileSdk 33
@@ -22,6 +25,9 @@ android {
         buildConfig true
         dataBinding true
         viewBinding true
+    }
+    buildTypes.each {
+        it.buildConfigField('String', 'FOOD_RECIPES_API_KEY', localProperties.FOOD_RECIPES_API_KEY)
     }
     buildTypes {
         release {
