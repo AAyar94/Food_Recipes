@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aayar94.foodrecipes.databinding.FragmentRecipesBinding
 import com.aayar94.foodrecipes.ui.MainViewModel
@@ -21,6 +23,7 @@ import kotlinx.coroutines.launch
 class RecipesFragment : Fragment() {
     private var mBinding: FragmentRecipesBinding? = null
     private val binding get() = mBinding!!
+    private val args by navArgs<RecipesFragmentArgs>()
     private lateinit var mainViewModel: MainViewModel
     private lateinit var recipesViewModel: RecipesViewModel
     private val adapter by lazy { RecipesAdapter() }
@@ -43,6 +46,11 @@ class RecipesFragment : Fragment() {
         setupRecyclerView()
         readDatabase()
 
+        binding.recipesFAB.setOnClickListener {
+            val action = RecipesFragmentDirections.actionRecipesFragmentToRecipesBottomSheet()
+            findNavController().navigate(action)
+        }
+
         return binding.root
     }
 
@@ -55,7 +63,7 @@ class RecipesFragment : Fragment() {
     private fun readDatabase() {
         lifecycleScope.launch {
             mainViewModel.readRecipes.observeOnce(viewLifecycleOwner) { database ->
-                if (database.isNotEmpty()) {
+                if (database.isNotEmpty() && !args.backFromBottomSheet) {
                     adapter.setData(database[0].foodRecipe)
                     hideShimmerEffect()
                 } else {
@@ -68,9 +76,8 @@ class RecipesFragment : Fragment() {
     private fun windowColorSetter() {
         val window = activity?.window
         val color = SurfaceColors.SURFACE_2.getColor(requireContext())
-        window!!.statusBarColor = color // Set color of system statusBar same as ActionBar
-        window.navigationBarColor =
-            color // Set color of system navigationBar same as BottomNavigationView
+        window!!.statusBarColor = color
+        window.navigationBarColor = color
     }
 
     private fun requestAPIData() {
