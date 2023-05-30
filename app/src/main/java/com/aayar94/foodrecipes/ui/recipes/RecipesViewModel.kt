@@ -1,6 +1,7 @@
 package com.aayar94.foodrecipes.ui.recipes
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.aayar94.foodrecipes.data.DataStoreRepository
@@ -29,11 +30,20 @@ class RecipesViewModel @Inject constructor(
     private var mealType = DEFAULT_MEAL_TYPE
     private var dietType = DEFAULT_DIET_TYPE
 
+    var networkStatus = false
+    var backOnline = false
+
     val readMealAndDietType = dataStoreRepository.readMealAndDietType
+    val readBackOnline = dataStoreRepository.readBackOnline
 
     fun saveMealAndDietType(mealType: String, mealTypeId: Int, dietType: String, dietTypeId: Int) =
         viewModelScope.launch(Dispatchers.IO) {
             dataStoreRepository.saveMealAndDietType(mealType, mealTypeId, dietType, dietTypeId)
+        }
+
+    fun saveBackOnline(backOnline: Boolean) =
+        viewModelScope.launch(Dispatchers.IO) {
+            dataStoreRepository.saveBackOnline(backOnline)
         }
 
     fun applyQueries(): HashMap<String, String> {
@@ -54,5 +64,26 @@ class RecipesViewModel @Inject constructor(
         queries[QUERY_FILL_INGREDIENTS] = "true"
 
         return queries
+    }
+    fun applySearchQuery(searchQuery: String): HashMap<String, String> {
+        val queries: HashMap<String, String> = HashMap()
+        queries[QUERY_SEARCH] = searchQuery
+        queries[QUERY_NUMBER] = DEFAULT_RECIPES_NUMBER
+        queries[QUERY_API_KEY] = API_KEY
+        queries[QUERY_ADD_RECIPE_INFORMATION] = "true"
+        queries[QUERY_FILL_INGREDIENTS] = "true"
+        return queries
+    }
+
+    fun showNetworkStatus() {
+        if (!networkStatus) {
+            Toast.makeText(getApplication(), "No Internet Connection", Toast.LENGTH_LONG).show()
+            saveBackOnline(true)
+        } else if (networkStatus) {
+            if (backOnline) {
+                Toast.makeText(getApplication(), "We're back online", Toast.LENGTH_LONG).show()
+                saveBackOnline(false)
+            }
+        }
     }
 }
