@@ -7,7 +7,7 @@ import com.google.gson.reflect.TypeToken
 
 class RecipesTypeConverter {
 
-    var gson = Gson()
+    private var gson = Gson()
 
     @TypeConverter
     fun foodRecipesToString(foodRecipe: FoodRecipe): String {
@@ -21,12 +21,12 @@ class RecipesTypeConverter {
     }
 
     @TypeConverter
-    fun resultToString(result: com.aayar94.foodrecipes.model.Result): String {
+    fun favoriteRecipeToString(result: com.aayar94.foodrecipes.model.Result): String {
         return gson.toJson(result)
     }
 
     @TypeConverter
-    fun stringToResult(data: String): com.aayar94.foodrecipes.model.Result {
+    fun stringToFavoriteRecipe(data: String): com.aayar94.foodrecipes.model.Result {
         val listType = object : TypeToken<com.aayar94.foodrecipes.model.Result>() {}.type
         return gson.fromJson(data, listType)
     }

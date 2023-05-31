@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.aayar94.foodrecipes.data.Repository
+import com.aayar94.foodrecipes.data.local.entities.FavoritesEntity
 import com.aayar94.foodrecipes.data.local.entities.RecipesEntity
 import com.aayar94.foodrecipes.model.FoodRecipe
 import com.aayar94.foodrecipes.utils.NetworkResult
@@ -27,6 +28,8 @@ class MainViewModel @Inject constructor(
     /**     ROOM DATABASE       */
 
     val readRecipes: LiveData<List<RecipesEntity>> = repository.local.readDatabase().asLiveData()
+    val readFavoriteRecipes: LiveData<List<FavoritesEntity>> =
+        repository.local.readFavoriteRecipes().asLiveData()
 
     private fun insertRecipes(recipesEntity: RecipesEntity) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -34,6 +37,20 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    fun insertFavoriteRecipe(favoritesEntity: FavoritesEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.insertFavoriteRecipes(favoritesEntity)
+        }
+
+    fun deleteFavoriteRecipe(favoritesEntity: FavoritesEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.deleteFavoriteRecipe(favoritesEntity)
+        }
+
+    fun deleteAllFavoriteRecipes() =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.deleteAllFavoriteRecipes()
+        }
 
     /**     RETROFIT        */
     var recipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
@@ -44,6 +61,7 @@ class MainViewModel @Inject constructor(
             getRecipesSafeCall(queries)
         }
     }
+
     fun searchRecipes(searchQuery: Map<String, String>) = viewModelScope.launch {
         searchRecipesSafeCall(searchQuery)
     }

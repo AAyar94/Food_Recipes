@@ -41,4 +41,10 @@
     <string name="instruction">Instruction</string>
     <string name="healthy">Healthy</string>
     <string name="dairy_free">Dairy Free</string>
+    <string name="save_to_favorites">Save to favorites</string>
+    <string name="removed_from_favorites">Removed from favorites</string>
+    <string name="okay">Okay</string>
+    <string name="recipe_saved">Recipes saved</string>
+    <string name="not_found_favorite_recipes">No favorite recipe found</string>
+    <string name="delete_favorite_menu">Delete favorite</string>
 </resources>
