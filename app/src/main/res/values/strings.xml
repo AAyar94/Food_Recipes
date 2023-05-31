@@ -47,4 +47,9 @@
     <string name="recipe_saved">Recipes saved</string>
     <string name="not_found_favorite_recipes">No favorite recipe found</string>
     <string name="delete_favorite_menu">Delete favorite</string>
+    <string name="next">Next</string>
+    <string name="landing_text_one">With this app you can find over than 5000 recipes</string>
+    <string name="landing_text_two">You want like vegan, vegetarian, drinks, snacks etc however you want</string>
+    <string name="and_you_can_easily_plan_you_meals">and you can easily plan your meals</string>
+    <string name="finish">Finish</string>
 </resources>

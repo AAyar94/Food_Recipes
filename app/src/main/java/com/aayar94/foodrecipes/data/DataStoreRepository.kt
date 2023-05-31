@@ -15,6 +15,7 @@ import com.aayar94.foodrecipes.utils.Constants.Companion.DEFAULT_MEAL_TYPE
 import com.aayar94.foodrecipes.utils.Constants.Companion.PREFERENCES_BACK_ONLINE
 import com.aayar94.foodrecipes.utils.Constants.Companion.PREFERENCES_DIET_TYPE
 import com.aayar94.foodrecipes.utils.Constants.Companion.PREFERENCES_DIET_TYPE_ID
+import com.aayar94.foodrecipes.utils.Constants.Companion.PREFERENCES_LANDING_FINISHED
 import com.aayar94.foodrecipes.utils.Constants.Companion.PREFERENCES_MEAL_TYPE
 import com.aayar94.foodrecipes.utils.Constants.Companion.PREFERENCES_MEAL_TYPE_ID
 import com.aayar94.foodrecipes.utils.Constants.Companion.PREFERENCES_NAME
@@ -35,6 +36,7 @@ class DataStoreRepository @Inject constructor(@ApplicationContext private val co
         val selectedDietType = stringPreferencesKey(PREFERENCES_DIET_TYPE)
         val selectedDietTypeId = intPreferencesKey(PREFERENCES_DIET_TYPE_ID)
         val backOnline = booleanPreferencesKey(PREFERENCES_BACK_ONLINE)
+        val landingFinished = booleanPreferencesKey(PREFERENCES_LANDING_FINISHED)
     }
 
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
@@ -92,6 +94,24 @@ class DataStoreRepository @Inject constructor(@ApplicationContext private val co
                 selectedDietType,
                 selectedDietTypeId
             )
+        }
+
+    suspend fun landingFinished(isFinished: Boolean) {
+        context.dataStore.edit { preferences ->
+            preferences[PreferenceKeys.landingFinished] = isFinished
+        }
+    }
+
+    val readLandingFinished = context.dataStore.data
+        .catch { exception ->
+            if (exception is IOException) {
+                emit(emptyPreferences())
+            } else {
+                throw exception
+            }
+        }.map { preferences ->
+            val landingFinished = preferences[PreferenceKeys.landingFinished] ?: false
+            landingFinished
         }
 }
 

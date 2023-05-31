@@ -35,10 +35,12 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.landingBeginnerFragment -> binding.bottomNavBar.visibility = View.GONE
+                R.id.onBoardingFragment -> binding.bottomNavBar.visibility = View.GONE
                 else -> binding.bottomNavBar.visibility = View.VISIBLE
             }
             when (destination.id) {
                 R.id.landingBeginnerFragment -> actionBar?.hide()
+                R.id.onBoardingFragment -> actionBar?.hide()
                 else -> actionBar?.show()
             }
         }

@@ -72,4 +72,9 @@
     <color name="red">#FF4646</color>
     <color name="yellow">#FFC114</color>
     <color name="green">#00C980</color>
+
+    <color name="onBoardingFirst">#EACBFC</color>
+    <color name="onBoardingSecond">#FDF8A0</color>
+    <color name="onBoardingThird">#0B3CEA</color>
+    <color name="cardBackgroundLightColor">#106200EE</color>
 </resources>

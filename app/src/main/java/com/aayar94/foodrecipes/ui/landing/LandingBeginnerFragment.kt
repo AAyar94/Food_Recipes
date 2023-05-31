@@ -8,15 +8,20 @@ import android.view.ViewGroup
 import android.view.WindowInsetsController
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.aayar94.foodrecipes.R
 import com.aayar94.foodrecipes.databinding.FragmentLandingBeginnerBinding
+import com.aayar94.foodrecipes.ui.onboarding.OnBoardingViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LandingBeginnerFragment : Fragment() {
     private var mBinding: FragmentLandingBeginnerBinding? = null
     private val binding get() = mBinding!!
+    private val viewModel: OnBoardingViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,11 +42,22 @@ class LandingBeginnerFragment : Fragment() {
             @Suppress("DEPRECATION")
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
-
+        var isLandingFinished = false
+        lifecycleScope.launch {
+            viewModel.readLandingFinished.collect { value ->
+                isLandingFinished = value
+            }
+        }
         binding.letsCookButton.setOnClickListener {
-            val action =
-                LandingBeginnerFragmentDirections.actionLandingBeginnerFragmentToRecipesFragment()
-            findNavController().navigate(action)
+            if (isLandingFinished) {
+                val action =
+                    LandingBeginnerFragmentDirections.actionLandingBeginnerFragmentToRecipesFragment()
+                findNavController().navigate(action)
+            } else {
+                val action =
+                    LandingBeginnerFragmentDirections.actionLandingBeginnerFragmentToOnBoardingFragment()
+                findNavController().navigate(action)
+            }
         }
 
         return binding.root

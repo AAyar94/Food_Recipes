@@ -49,6 +49,9 @@
         android:label="fragment_landing_beginner"
         tools:layout="@layout/fragment_landing_beginner" >
         <action
+            android:id="@+id/action_landingBeginnerFragment_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment" />
+        <action
             android:id="@+id/action_landingBeginnerFragment_to_recipesFragment"
             app:destination="@id/recipesFragment" />
     </fragment>
@@ -62,18 +65,11 @@
             app:argType="com.aayar94.foodrecipes.model.Result" />
     </activity>
     <fragment
-        android:id="@+id/overviewFragment"
-        android:name="com.aayar94.foodrecipes.ui.overview.OverviewFragment"
-        android:label="fragment_overview"
-        tools:layout="@layout/fragment_overview" />
-    <fragment
-        android:id="@+id/ingredientsFragment"
-        android:name="com.aayar94.foodrecipes.ui.ingredients.IngredientsFragment"
-        android:label="fragment_ingredients"
-        tools:layout="@layout/fragment_ingredients" />
-    <fragment
-        android:id="@+id/instructionsFragment"
-        android:name="com.aayar94.foodrecipes.ui.instructions.InstructionsFragment"
-        android:label="fragment_instructions"
-        tools:layout="@layout/fragment_instructions" />
+        android:id="@+id/onBoardingFragment"
+        android:name="com.aayar94.foodrecipes.ui.onboarding.OnBoardingFragment"
+        android:label="OnBoardingFragment" >
+        <action
+            android:id="@+id/action_onBoardingFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+    </fragment>
 </navigation>
