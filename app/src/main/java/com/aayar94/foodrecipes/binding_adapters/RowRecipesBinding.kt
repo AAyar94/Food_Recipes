@@ -1,17 +1,21 @@
 package com.aayar94.foodrecipes.binding_adapters
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import androidx.navigation.findNavController
 import coil.load
 import com.aayar94.foodrecipes.R
+import com.aayar94.foodrecipes.ui.recipes.RecipesFragmentDirections
 import org.jsoup.Jsoup
 
 class RowRecipesBinding {
     companion object {
-        /*@BindingAdapter("onRecipeClickListener")
+        @BindingAdapter("onRecipeClickListener")
         @JvmStatic
         fun onRecipeClickListener(
             recipeRowLayout: ConstraintLayout,
@@ -24,11 +28,10 @@ class RowRecipesBinding {
                         RecipesFragmentDirections.actionRecipesFragmentToDetailsActivity(result)
                     recipeRowLayout.findNavController().navigate(action)
                 } catch (e: Exception) {
-                    Log.d("onRecipeClickListener", e.toString())
+                    Log.d("onRecipeClickListener", e.message.toString())
                 }
             }
-        }*/
-
+        }
 
         @BindingAdapter("loadImageFromUrl")
         @JvmStatic

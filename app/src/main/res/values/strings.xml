@@ -18,7 +18,7 @@
     <string name="soup">Soup</string>
     <string name="beverage">Beverage</string>
     <string name="drink">Drink</string>
-    <string name="fingerfood">Fingerfood</string>
+    <string name="fingerfood">Finger Food</string>
     <string name="snack">Snack</string>
     <string name="fingerFood">Finger Food</string>
     <string name="marinade">Marinede</string>
@@ -35,4 +35,10 @@
     <string name="let_s_cook">Let\'s cook</string>
     <string name="food_n_recipes">Food \n Recipes</string>
     <string name="search">Search\n</string>
+    <string name="details">Details</string>
+    <string name="overview">Overview</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="instruction">Instruction</string>
+    <string name="healthy">Healthy</string>
+    <string name="dairy_free">Dairy Free</string>
 </resources>
