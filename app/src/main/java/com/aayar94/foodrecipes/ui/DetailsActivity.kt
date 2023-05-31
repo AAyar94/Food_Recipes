@@ -91,24 +91,6 @@ class DetailsActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun checkSavedRecipes(menuItem: MenuItem) {
-        mainViewModel.readFavoriteRecipes.observe(this) { favoritesEntity ->
-            try {
-                for (savedRecipe in favoritesEntity) {
-                    if (savedRecipe.result.recipeId == args.result.recipeId) {
-                        changeMenuItemColor(menuItem, R.color.red)
-                        savedRecipeId = savedRecipe.id
-                        recipeSaved = true
-                    } else {
-                        changeMenuItemColor(menuItem, R.color.black)
-                    }
-                }
-            } catch (e: Exception) {
-                Log.d("DetailsActivity", e.message.toString())
-            }
-        }
-    }
-
     private fun saveToFavorites(item: MenuItem) {
         val favoritesEntity =
             FavoritesEntity(
@@ -119,6 +101,18 @@ class DetailsActivity : AppCompatActivity() {
         changeMenuItemColor(item, R.color.red)
         showSnackBar(getString(R.string.recipe_saved))
         recipeSaved = true
+    }
+
+    private fun checkSavedRecipes(menuItem: MenuItem) {
+        mainViewModel.readFavoriteRecipes.observe(this) { favoritesEntity ->
+            favoritesEntity.find { savedRecipe ->
+                savedRecipe.result.recipeId == args.result.recipeId
+            }?.let { savedRecipe ->
+                changeMenuItemColor(menuItem, R.color.red)
+                savedRecipeId = savedRecipe.id
+                recipeSaved = true
+            } ?: changeMenuItemColor(menuItem, R.color.black)
+        }
     }
 
     private fun removeFromFavorites(item: MenuItem) {
