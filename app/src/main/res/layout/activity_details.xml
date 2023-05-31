@@ -5,12 +5,14 @@
     android:id="@+id/detailsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="?attr/colorSecondaryContainer"
     tools:context=".ui.DetailsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="?attr/colorSecondaryContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -18,14 +20,16 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:backgroundTint="?attr/colorSecondaryContainer"
+            app:titleTextColor="?attr/colorOnSurface" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
-            style="@style/Widget.Material3.TabLayout.OnSurface"
+            style="@style/CustomTabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicatorHeight="2dp" />
+            android:backgroundTint="?attr/colorSecondaryContainer" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

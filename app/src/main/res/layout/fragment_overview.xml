@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorSecondaryContainer"
     tools:context=".ui.overview.OverviewFragment">
 
     <ImageView
@@ -140,6 +141,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="12dp"
         android:fontFamily="@font/courgette"
+        android:textColor="?attr/colorOnSurface"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -163,6 +165,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/vegetarian"
+        android:textColor="?attr/colorOnSurface"
         app:layout_constraintBottom_toBottomOf="@+id/vegatarian_imageView"
         app:layout_constraintStart_toEndOf="@+id/vegatarian_imageView"
         app:layout_constraintTop_toTopOf="@+id/vegatarian_imageView" />
@@ -173,6 +176,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/gluten_free"
+        android:textColor="?attr/colorOnSurface"
         app:layout_constraintBottom_toBottomOf="@+id/glutenfree_imageView"
         app:layout_constraintStart_toEndOf="@+id/glutenfree_imageView"
         app:layout_constraintTop_toTopOf="@+id/glutenfree_imageView" />
@@ -183,6 +187,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/healthy"
+        android:textColor="?attr/colorOnSurface"
         app:layout_constraintBottom_toBottomOf="@+id/healty_imageView"
         app:layout_constraintStart_toEndOf="@+id/healty_imageView"
         app:layout_constraintTop_toTopOf="@+id/healty_imageView" />
@@ -193,6 +198,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/vegan"
+        android:textColor="?attr/colorOnSurface"
         app:layout_constraintBottom_toBottomOf="@+id/vegan_imageView"
         app:layout_constraintStart_toEndOf="@+id/vegan_imageView"
         app:layout_constraintTop_toTopOf="@+id/vegan_imageView" />
@@ -203,6 +209,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/dairy_free"
+        android:textColor="?attr/colorOnSurface"
         app:layout_constraintBottom_toBottomOf="@+id/dairyfree_imageView"
         app:layout_constraintStart_toEndOf="@+id/dairyfree_imageView"
         app:layout_constraintTop_toTopOf="@+id/dairyfree_imageView" />
@@ -214,6 +221,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:textColor="?attr/colorOnSurface"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

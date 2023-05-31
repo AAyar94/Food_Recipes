@@ -1,4 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="Theme.FoodRecipes" parent="Theme.Material3.Light">
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
@@ -29,6 +30,7 @@
         <item name="android:windowLightStatusBar">?isLightTheme</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">?isLightTheme</item>
     </style>
+
     <style name="Theme.DetailsActivity" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
@@ -59,7 +61,13 @@
 
         <item name="android:windowLightStatusBar">?isLightTheme</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">?isLightTheme</item>
+    </style>
 
-
+    <style name="CustomTabLayout" parent="Widget.Material3.TabLayout">
+        <item name="background">?attr/colorSecondaryContainer</item>
+        <item name="tabIndicator">?colorPrimary</item>
+        <item name="tabIconTint">?colorPrimary</item>
+        <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabSelectedTextColor">?colorPrimary</item>
     </style>
 </resources>

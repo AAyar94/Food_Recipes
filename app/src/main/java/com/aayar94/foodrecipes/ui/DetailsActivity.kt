@@ -2,7 +2,6 @@ package com.aayar94.foodrecipes.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
@@ -17,7 +16,7 @@ import com.aayar94.foodrecipes.ui.adapter.PagerAdapter
 import com.aayar94.foodrecipes.ui.ingredients.IngredientsFragment
 import com.aayar94.foodrecipes.ui.instructions.InstructionsFragment
 import com.aayar94.foodrecipes.ui.overview.OverviewFragment
-import com.google.android.material.elevation.SurfaceColors
+import com.google.android.material.color.MaterialColors
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -130,9 +129,14 @@ class DetailsActivity : AppCompatActivity() {
     @SuppressLint("ResourceAsColor")
     private fun statusBarColorSetter() {
         val window = window
-        val color = SurfaceColors.SURFACE_2.getColor(applicationContext)
-        window!!.statusBarColor = color
-        window.navigationBarColor = android.R.color.transparent
+        window!!.statusBarColor = MaterialColors.getColor(
+            binding.root,
+            com.google.android.material.R.attr.colorSecondaryContainer
+        )
+        window.navigationBarColor = MaterialColors.getColor(
+            binding.root,
+            com.google.android.material.R.attr.colorSurface
+        )
     }
 
     private fun showSnackBar(message: String) {
@@ -145,11 +149,11 @@ class DetailsActivity : AppCompatActivity() {
         item.icon?.setTint(ContextCompat.getColor(this, color))
     }
 
+    @SuppressLint("ResourceType")
     private fun setupTabIcons(iconsList: ArrayList<Int>) {
         with(binding.tabLayout) {
             for (i in 0 until iconsList.size) {
                 getTabAt(i)?.setIcon(iconsList[i])
-                Log.d("tabIcon", iconsList[i].toString())
             }
         }
     }

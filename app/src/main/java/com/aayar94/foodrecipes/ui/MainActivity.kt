@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.aayar94.foodrecipes.R
 import com.aayar94.foodrecipes.databinding.ActivityMainBinding
+import com.google.android.material.color.MaterialColors
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,6 +32,14 @@ class MainActivity : AppCompatActivity() {
         )
         binding.bottomNavBar.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        window.statusBarColor = MaterialColors.getColor(
+            binding.root,
+            com.google.android.material.R.attr.colorPrimaryContainer
+        )
+        window.navigationBarColor=MaterialColors.getColor(
+            binding.root,
+            com.google.android.material.R.attr.colorPrimarySurface)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
