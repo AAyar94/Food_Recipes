@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         )
         window.navigationBarColor=MaterialColors.getColor(
             binding.root,
-            com.google.android.material.R.attr.colorPrimarySurface)
+            com.google.android.material.R.attr.colorPrimary)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {

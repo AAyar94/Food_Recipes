@@ -131,7 +131,7 @@ class DetailsActivity : AppCompatActivity() {
         val window = window
         window!!.statusBarColor = MaterialColors.getColor(
             binding.root,
-            com.google.android.material.R.attr.colorSecondaryContainer
+            com.google.android.material.R.attr.colorOnSurface
         )
         window.navigationBarColor = MaterialColors.getColor(
             binding.root,
