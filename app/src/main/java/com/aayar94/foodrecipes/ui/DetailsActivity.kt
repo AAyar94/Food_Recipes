@@ -129,9 +129,9 @@ class DetailsActivity : AppCompatActivity() {
     @SuppressLint("ResourceAsColor")
     private fun statusBarColorSetter() {
         val window = window
-        window!!.statusBarColor = MaterialColors.getColor(
+        window.statusBarColor = MaterialColors.getColor(
             binding.root,
-            com.google.android.material.R.attr.colorOnSurface
+            com.google.android.material.R.attr.colorSurface
         )
         window.navigationBarColor = MaterialColors.getColor(
             binding.root,
