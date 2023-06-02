@@ -6,37 +6,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import coil.load
 import com.aayar94.foodrecipes.R
-import com.aayar94.foodrecipes.databinding.FragmentSecondScreenBinding
+import com.aayar94.foodrecipes.databinding.FragmentLandingBeginnerBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
-class SecondScreenFragment : Fragment() {
-    private var mBinding: FragmentSecondScreenBinding? = null
+@AndroidEntryPoint
+class LandingBeginnerFragment : Fragment() {
+    private var mBinding: FragmentLandingBeginnerBinding? = null
     private val binding get() = mBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        mBinding = FragmentSecondScreenBinding.inflate(layoutInflater)
+        mBinding = FragmentLandingBeginnerBinding.inflate(layoutInflater, container, false)
 
         val viewPager = activity?.findViewById<ViewPager2>(R.id.onBoardingFragment_ViewPager)
-        binding.screenTwoNext.setOnClickListener {
-            viewPager?.currentItem = 3
+        binding.letsCookButton.setOnClickListener {
+            viewPager?.currentItem = 1
         }
-        binding.imageViewOnBoardingSecondScreen.load(R.raw.two_drinks)
-
 
         return binding.root
-
-
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        mBinding = null
-    }
-
 }

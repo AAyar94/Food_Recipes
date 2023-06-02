@@ -8,15 +8,35 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.aayar94.foodrecipes.databinding.FragmentOnboardingBinding
 import com.aayar94.foodrecipes.ui.fragment.onboarding.FirstScreenFragment
-import com.aayar94.foodrecipes.ui.fragment.onboarding.adapter.OnboardingViewPagerAdapter
+import com.aayar94.foodrecipes.ui.onboarding.adapter.OnboardingViewPagerAdapter
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class OnBoardingFragment : Fragment() {
     private var mBinding: FragmentOnboardingBinding? = null
     private val binding get() = mBinding!!
+    private val viewModel: OnBoardingViewModel by viewModels()
 
+    override fun onStart() {
+        super.onStart()
+        var isLandingFinished = false
+        lifecycleScope.launch {
+            viewModel.readLandingFinished.collect { value ->
+                isLandingFinished = value
+            }
+        }
+        if (isLandingFinished){
+            val action =
+                OnBoardingFragmentDirections.actionOnBoardingFragmentToRecipesFragment()
+            findNavController().navigate(action)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
@@ -24,22 +44,15 @@ class OnBoardingFragment : Fragment() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
-
-
-        /*val windowInsetsController =
-            activity?.window?.let { WindowCompat.getInsetsController(it, activity?.window!!.decorView) }
-
-        windowInsetsController?.show(WindowInsetsCompat.Type.systemBars())*/
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View {
         mBinding = FragmentOnboardingBinding.inflate(layoutInflater)
         val fragmentList = arrayListOf<Fragment>(
+            LandingBeginnerFragment(),
             FirstScreenFragment(),
             SecondScreenFragment(),
             ThirdScreenFragment()
@@ -49,8 +62,6 @@ class OnBoardingFragment : Fragment() {
             requireActivity().supportFragmentManager,
             lifecycle
         )
-
-
         binding.onBoardingFragmentViewPager.adapter = adapter
 
         return binding.root

@@ -38,10 +38,6 @@ class ThirdScreenFragment : Fragment() {
             findNavController().navigate(action)
             onBoardingFinishedOnce()
         }
-
-
-
-
         return binding.root
     }
 

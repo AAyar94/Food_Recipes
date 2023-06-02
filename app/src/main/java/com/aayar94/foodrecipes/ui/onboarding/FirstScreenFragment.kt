@@ -17,14 +17,14 @@ class FirstScreenFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         mBinding = FragmentFirstScreenBinding.inflate(layoutInflater)
 
         binding.imageViewOnBoardingFirstScreen.load(R.raw.cooking)
         val viewPager = activity?.findViewById<ViewPager2>(R.id.onBoardingFragment_ViewPager)
         binding.screenOneNext.setOnClickListener {
-            viewPager?.currentItem = 1
+            viewPager?.currentItem = 2
         }
 
         return binding.root

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/food_recipes_navigation"
-    app:startDestination="@id/landingBeginnerFragment">
+    app:startDestination="@id/onBoardingFragment">
 
     <fragment
         android:id="@+id/recipesFragment"
@@ -43,18 +43,6 @@
             android:id="@+id/action_recipesBottomSheet_to_recipesFragment"
             app:destination="@id/recipesFragment" />
     </dialog>
-    <fragment
-        android:id="@+id/landingBeginnerFragment"
-        android:name="com.aayar94.foodrecipes.ui.landing.LandingBeginnerFragment"
-        android:label="fragment_landing_beginner"
-        tools:layout="@layout/fragment_landing_beginner" >
-        <action
-            android:id="@+id/action_landingBeginnerFragment_to_onBoardingFragment"
-            app:destination="@id/onBoardingFragment" />
-        <action
-            android:id="@+id/action_landingBeginnerFragment_to_recipesFragment"
-            app:destination="@id/recipesFragment" />
-    </fragment>
     <activity
         android:id="@+id/detailsActivity"
         android:name="com.aayar94.foodrecipes.ui.DetailsActivity"

@@ -11,14 +11,10 @@ class PagerAdapter(
     private val tabTitles: ArrayList<String>,
     fm: FragmentManager
 ) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-
-    fun addFragment(fragment: Fragment, title: String, icon: Int) {
-        fragments.add(fragment)
-        tabTitles.add(title)
-    }
     override fun getPageTitle(position: Int): CharSequence? {
         return tabTitles[position]
     }
+
 
     override fun getCount(): Int {
         return fragments.size
