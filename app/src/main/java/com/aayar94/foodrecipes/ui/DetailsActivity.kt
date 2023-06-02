@@ -66,7 +66,7 @@ class DetailsActivity : AppCompatActivity() {
 
         binding.viewPager.adapter = adapter
         binding.tabLayout.setupWithViewPager(binding.viewPager)
-        binding.tabLayout.setTabIconTintResource(R.color.black)
+
         setupTabIcons(iconsList)
 
         setContentView(binding.root)
@@ -126,7 +126,6 @@ class DetailsActivity : AppCompatActivity() {
         recipeSaved = false
     }
 
-    @SuppressLint("ResourceAsColor")
     private fun statusBarColorSetter() {
         val window = window
         window.statusBarColor = MaterialColors.getColor(
@@ -149,11 +148,16 @@ class DetailsActivity : AppCompatActivity() {
         item.icon?.setTint(ContextCompat.getColor(this, color))
     }
 
-    @SuppressLint("ResourceType")
     private fun setupTabIcons(iconsList: ArrayList<Int>) {
         with(binding.tabLayout) {
             for (i in 0 until iconsList.size) {
-                getTabAt(i)?.setIcon(iconsList[i])
+               getTabAt(i)?.setIcon(iconsList[i])
+              getTabAt(i)?.icon?.setTint(
+                    MaterialColors.getColor(
+                        binding.root,
+                        com.google.android.material.R.attr.colorOnSurface
+                    )
+                )
             }
         }
     }

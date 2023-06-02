@@ -60,4 +60,11 @@
         <item name="android:windowLightStatusBar">?isLightTheme</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">?isLightTheme</item>
     </style>
+    <style name="CustomTabLayout" parent="Widget.Material3.TabLayout">
+        <item name="background">?attr/colorSecondaryContainer</item>
+        <item name="tabIndicator">?colorPrimary</item>
+        <item name="tabIconTint">?colorOnSurface</item>
+        <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabSelectedTextColor">?colorPrimary</item>
+    </style>
 </resources>

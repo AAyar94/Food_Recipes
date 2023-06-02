@@ -21,7 +21,8 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:titleTextColor="?attr/colorOnSurface" />
+            app:titleTextColor="?attr/colorOnSurface"
+            tools:title="Details" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"

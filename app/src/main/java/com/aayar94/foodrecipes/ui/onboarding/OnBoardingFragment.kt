@@ -13,7 +13,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aayar94.foodrecipes.databinding.FragmentOnboardingBinding
 import com.aayar94.foodrecipes.ui.fragment.onboarding.FirstScreenFragment
-import com.aayar94.foodrecipes.ui.onboarding.adapter.OnboardingViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

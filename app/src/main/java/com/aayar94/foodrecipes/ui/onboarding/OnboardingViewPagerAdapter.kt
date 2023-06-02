@@ -1,4 +1,4 @@
-package com.aayar94.foodrecipes.ui.onboarding.adapter
+package com.aayar94.foodrecipes.ui.onboarding
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
