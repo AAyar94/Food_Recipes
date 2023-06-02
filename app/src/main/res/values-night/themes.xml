@@ -1,6 +1,6 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.FoodRecipes" parent="Theme.Material3.Dark">
+    <style name="Theme.FoodRecipes" parent="Theme.Material3.DynamicColors.DayNight">
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
         <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_dark_primaryContainer</item>

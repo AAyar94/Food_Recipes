@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.FoodRecipes" parent="Theme.Material3.Light">
+    <style name="Theme.FoodRecipes" parent="Theme.Material3.DynamicColors.DayNight">
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
@@ -31,7 +31,7 @@
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">?isLightTheme</item>
     </style>
 
-    <style name="Theme.DetailsActivity" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Theme.DetailsActivity" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
@@ -66,7 +66,7 @@
     <style name="CustomTabLayout" parent="Widget.Material3.TabLayout">
         <item name="background">?attr/colorSecondaryContainer</item>
         <item name="tabIndicator">?colorPrimary</item>
-        <item name="tabIconTint">?colorPrimary</item>
+        <item name="tabIconTint">?colorOnSurface</item>
         <item name="tabIndicatorHeight">3dp</item>
         <item name="tabSelectedTextColor">?colorPrimary</item>
     </style>
