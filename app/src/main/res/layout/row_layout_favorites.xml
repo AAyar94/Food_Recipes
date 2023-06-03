@@ -67,12 +67,12 @@
 
                 <TextView
                     android:id="@+id/favorite_description_textView"
+                    parseHtml="@{favoritesEntity.result.summary}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:ellipsize="end"
                     android:maxLines="3"
-                    android:text="@{favoritesEntity.result.summary}"
                     android:textColor="?attr/colorOnSurface"
                     app:layout_constraintEnd_toEndOf="@+id/favorite_title_textView"
                     app:layout_constraintStart_toStartOf="@+id/favorite_title_textView"
