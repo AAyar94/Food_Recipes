@@ -53,4 +53,5 @@
     <string name="and_you_can_easily_plan_you_meals">and you can easily plan your meals</string>
     <string name="finish">Finish</string>
     <string name="delete_all">Delete all</string>
+    <string name="loaded_from_cache">Loaded from cache</string>
 </resources>
