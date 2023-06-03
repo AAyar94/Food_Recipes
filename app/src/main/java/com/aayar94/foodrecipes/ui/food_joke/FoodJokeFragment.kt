@@ -1,6 +1,7 @@
 package com.aayar94.foodrecipes.ui.food_joke
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -21,6 +22,7 @@ class FoodJokeFragment : Fragment() {
     private var mBinding: FragmentFoodJokeBinding? = null
     private val binding get() = mBinding!!
     private val mainViewModel by viewModels<MainViewModel>()
+    private var foodJoke = "No FoodJoke"
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreateView(
@@ -51,6 +53,16 @@ class FoodJokeFragment : Fragment() {
             }
         }
 
+        binding.shareButton.setOnClickListener {
+            val intent = Intent().apply {
+                this.action = Intent.ACTION_SEND
+                this.putExtra(Intent.EXTRA_TEXT, foodJoke)
+                this.type = "text/plain"
+            }
+            startActivity(intent)
+
+        }
+
         mainViewModel.getFoodJoke(BuildConfig.FOOD_RECIPES_API_KEY)
         mainViewModel.foodJokeResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
@@ -58,6 +70,7 @@ class FoodJokeFragment : Fragment() {
                     showContent()
                     hideError()
                     hideLoading()
+                    foodJoke = response.data?.text ?: "NoJokeHere"
                     binding.foodJokeTextView.text = response.data?.text
                 }
 
@@ -92,38 +105,39 @@ class FoodJokeFragment : Fragment() {
         }
     }
 
-    fun loadFromCache() {
+    private fun loadFromCache() {
         mainViewModel.readFoodJoke.observe(viewLifecycleOwner) { database ->
             if (database.isNotEmpty() && database != null) {
                 binding.foodJokeTextView.text = database[0].foodJoke.text
+                foodJoke = database[0].foodJoke.text
             }
 
         }
     }
 
-    fun showLoading() {
+    private fun showLoading() {
         binding.progressCircular.visibility = View.VISIBLE
     }
 
-    fun hideLoading() {
+    private fun hideLoading() {
         binding.progressCircular.visibility = View.GONE
     }
 
-    fun showError() {
+    private fun showError() {
         binding.errorTextView.visibility = View.VISIBLE
         binding.foodJokeErrorImage.visibility = View.VISIBLE
     }
 
-    fun hideError() {
+    private fun hideError() {
         binding.errorTextView.visibility = View.GONE
         binding.foodJokeErrorImage.visibility = View.GONE
     }
 
-    fun showContent() {
+    private fun showContent() {
         binding.cardView.visibility = View.VISIBLE
     }
 
-    fun hideContent() {
+    private fun hideContent() {
         binding.cardView.visibility = View.GONE
     }
 }

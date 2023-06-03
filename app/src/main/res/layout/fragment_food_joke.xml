@@ -17,7 +17,11 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardView"
@@ -27,24 +31,41 @@
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginVertical="24dp"
                 android:elevation="6dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:cardCornerRadius="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/foodJokeTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="16dp"
+                        android:layout_marginTop="48dp"
+                        android:fontFamily="@font/courgette"
+                        android:textColor="?colorOnSurface"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:text="@tools:sample/lorem/random" />
 
-                <TextView
-                    android:id="@+id/foodJokeTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="16dp"
-                    android:fontFamily="@font/courgette"
-                    android:textColor="?colorOnSurface"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:text="@tools:sample/lorem" />
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/share"
+                        android:textSize="24sp"
+                        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                        app:icon="@drawable/ic_share"
+                        android:id="@+id/shareButton"
+                        android:layout_marginBottom="24sp"
+                        app:iconSize="24dp" />
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </androidx.core.widget.NestedScrollView>
 
