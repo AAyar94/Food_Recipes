@@ -58,14 +58,13 @@ class FavoriteRecipesAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        myViewHolder.add(holder)
         rootView = holder.itemView.rootView
         myViewHolder.add(holder)
         val currentRecipe = favoriteRecipes[position]
         holder.bind(currentRecipe)
 
-        /**
-         * Single Click Listener
-         * */
+        /**     Single Click Listener       * */
         holder.itemView.findViewById<ConstraintLayout>(R.id.favoriteRecipesRowLayout)
             .setOnClickListener {
                 if (multiSelection) {
@@ -79,16 +78,13 @@ class FavoriteRecipesAdapter(
                 }
             }
 
-        /**
-         * Long Click Listener
-         * */
+        /**     Long Click Listener     * */
         holder.itemView.findViewById<ConstraintLayout>(R.id.favoriteRecipesRowLayout)
             .setOnLongClickListener {
                 if (!multiSelection) {
                     multiSelection = true
                     requireActivity.startActionMode(this)
-
-                    applySelection(holder, currentRecipe = currentRecipe)
+                    applySelection(holder, currentRecipe)
                     true
                 } else {
                     multiSelection = false
@@ -103,10 +99,10 @@ class FavoriteRecipesAdapter(
             changeRecipeStyle(
                 holder, MaterialColors.getColor(
                     holder.itemView,
-                    com.google.android.material.R.attr.colorOnPrimarySurface
+                    com.google.android.material.R.attr.colorSurface
                 ), MaterialColors.getColor(
                     holder.itemView,
-                    com.google.android.material.R.attr.colorOnPrimaryFixed
+                    com.google.android.material.R.attr.colorPrimary
                 )
             )
             applyActionModeTitle()
@@ -115,29 +111,14 @@ class FavoriteRecipesAdapter(
             changeRecipeStyle(
                 holder, MaterialColors.getColor(
                     holder.itemView,
-                    com.google.android.material.R.attr.colorOnPrimarySurface
+                    com.google.android.material.R.attr.colorPrimaryContainer
                 ), MaterialColors.getColor(
                     holder.itemView,
-                    com.google.android.material.R.attr.colorOnPrimarySurface
+                    com.google.android.material.R.attr.colorOnPrimaryContainer
                 )
             )
             applyActionModeTitle()
         }
-    }
-
-    private fun changeRecipeStyle(holder: MyViewHolder, backgroundColor: Int, strokeColor: Int) {
-        holder.itemView.findViewById<ConstraintLayout>(R.id.favoriteRecipesRowLayout)
-            .setBackgroundColor(
-                MaterialColors.getColor(
-                    holder.itemView,
-                    com.google.android.material.R.attr.colorSurface
-                )
-            )
-        holder.itemView.findViewById<MaterialCardView>(R.id.favorite_row_cardView).strokeColor =
-            MaterialColors.getColor(
-                holder.itemView,
-                com.google.android.material.R.attr.colorPrimaryFixed
-            )
     }
 
     private fun applyActionModeTitle() {
@@ -155,6 +136,15 @@ class FavoriteRecipesAdapter(
             }
 
         }
+    }
+
+    private fun changeRecipeStyle(holder: MyViewHolder, backgroundColor: Int, strokeColor: Int) {
+        holder.itemView.findViewById<ConstraintLayout>(R.id.favoriteRecipesBackground)
+            .setBackgroundColor(
+                backgroundColor
+            )
+        holder.itemView.findViewById<MaterialCardView>(R.id.favorite_row_cardView).strokeColor =
+            strokeColor
     }
 
     fun setData(newFavoriteRecipes: List<FavoritesEntity>) {
@@ -178,20 +168,18 @@ class FavoriteRecipesAdapter(
 
     override fun onActionItemClicked(actionMode: ActionMode?, item: MenuItem?): Boolean {
         if (item?.itemId == R.id.deleteFavoriteRecipeMenu) {
-            selectedRecipes.forEach { favoriteEntity ->
-                mainViewModel.deleteFavoriteRecipe(favoriteEntity)
-                showSnackBar("${selectedRecipes.size} Recipe/s removed")
-                multiSelection = false
-                selectedRecipes.clear()
-                actionMode?.finish()
+            selectedRecipes.forEach {
+                mainViewModel.deleteFavoriteRecipe(it)
             }
+            showSnackBar("${selectedRecipes.size} Recipe deleted.")
+            multiSelection = false
+            selectedRecipes.clear()
+            actionMode?.finish()
         }
         return true
     }
 
     override fun onDestroyActionMode(actionMode: ActionMode?) {
-        multiSelection = false
-        selectedRecipes.clear()
         myViewHolder.forEach { holder ->
             changeRecipeStyle(
                 holder, MaterialColors.getColor(
@@ -199,10 +187,12 @@ class FavoriteRecipesAdapter(
                     com.google.android.material.R.attr.colorSurface
                 ), MaterialColors.getColor(
                     holder.itemView,
-                    com.google.android.material.R.attr.colorOnPrimaryFixed
+                    com.google.android.material.R.attr.colorPrimary
                 )
             )
         }
+        multiSelection = false
+        selectedRecipes.clear()
     }
 
     private fun showSnackBar(message: String) {
