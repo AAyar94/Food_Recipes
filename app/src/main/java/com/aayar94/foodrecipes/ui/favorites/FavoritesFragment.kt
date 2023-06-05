@@ -14,6 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aayar94.foodrecipes.R
+import com.aayar94.foodrecipes.databinding.DeleteAllAlertDialogBinding
 import com.aayar94.foodrecipes.databinding.FragmentFavoritesBinding
 import com.aayar94.foodrecipes.ui.MainViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -58,22 +59,20 @@ class FavoritesFragment : Fragment() {
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 val builder = MaterialAlertDialogBuilder(requireContext())
-                builder.setIcon(R.drawable.ic_delete)
-                builder.setTitle(getString(R.string.delete_all))
-                builder.setMessage(getString(R.string.do_you_want_to_delete_all_saved_recipes))
-                builder.setPositiveButton(
-                    getString(R.string.okay)
-                ) { _, _ ->
-                    mainViewModel.deleteAllFavoriteRecipes()
-                }
-                builder.setNegativeButton(
-                    getString(R.string.cancel)
-                ) { dialog, _ ->
+                val view = DeleteAllAlertDialogBinding.inflate(layoutInflater)
+                builder.setView(view.root)
+                view.dialogTitle.text = getString(R.string.delete_all)
+                view.dialogMessage.text =
+                    getString(R.string.do_you_want_to_delete_all_saved_recipes)
+                val dialog = builder.create()
+                view.dialogCancelButton.setOnClickListener {
                     dialog.dismiss()
                 }
-                builder.show()
-
-                mainViewModel.deleteAllFavoriteRecipes()
+                view.dialogDeleteAllButton.setOnClickListener {
+                    mainViewModel.deleteAllFavoriteRecipes()
+                    dialog.dismiss()
+                }
+                dialog.show()
 
                 return true
             }
