@@ -28,6 +28,8 @@ class DetailsActivity : AppCompatActivity() {
     private var recipeSaved = false
     private var savedRecipeId = 0
 
+    private lateinit var menuItem: MenuItem
+
     private lateinit var binding: ActivityDetailsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +37,9 @@ class DetailsActivity : AppCompatActivity() {
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setSupportActionBar(binding.toolbar)
         binding.toolbar.setTitleTextColor(
-            ContextCompat.getColor(this, R.color.black)
+            ContextCompat.getColor(
+                this, R.color.lightGray
+            )
         )
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -74,8 +78,8 @@ class DetailsActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.details_menu, menu)
-        val menuItem = menu?.findItem(R.id.save_to_favorites_menu)
-        checkSavedRecipes(menuItem!!)
+        menuItem = menu?.findItem(R.id.save_to_favorites_menu)!!
+        checkSavedRecipes(menuItem)
         return true
     }
 
@@ -110,7 +114,9 @@ class DetailsActivity : AppCompatActivity() {
                 changeMenuItemColor(menuItem, R.color.red)
                 savedRecipeId = savedRecipe.id
                 recipeSaved = true
-            } ?: changeMenuItemColor(menuItem, R.color.black)
+            } ?: changeMenuItemColor(
+                menuItem, R.color.lightGray
+            )
         }
     }
 
@@ -121,7 +127,9 @@ class DetailsActivity : AppCompatActivity() {
                 args.result
             )
         mainViewModel.deleteFavoriteRecipe(favoritesEntity)
-        changeMenuItemColor(item, R.color.black)
+        changeMenuItemColor(
+            item, R.color.lightGray
+        )
         showSnackBar(getString(R.string.removed_from_favorites))
         recipeSaved = false
     }
@@ -146,6 +154,13 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun changeMenuItemColor(item: MenuItem, color: Int) {
         item.icon?.setTint(ContextCompat.getColor(this, color))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        changeMenuItemColor(
+            menuItem, R.color.lightGray
+        )
     }
 
 }
