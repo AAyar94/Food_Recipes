@@ -143,6 +143,7 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
                 is NetworkResult.Success -> {
                     hideShimmerEffect()
                     response.data?.let { adapter.setData(it) }
+                    recipesViewModel.saveMealAndDietType()
                 }
 
                 is NetworkResult.Error -> {
