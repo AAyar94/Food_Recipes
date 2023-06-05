@@ -41,7 +41,9 @@
         android:label="RecipesBottomSheet" >
         <action
             android:id="@+id/action_recipesBottomSheet_to_recipesFragment"
-            app:destination="@id/recipesFragment" />
+            app:destination="@id/recipesFragment"
+            app:popUpTo="@id/recipesBottomSheet"
+            app:popUpToInclusive="true" />
     </dialog>
     <activity
         android:id="@+id/detailsActivity"
