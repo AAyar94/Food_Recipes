@@ -1,6 +1,5 @@
 package com.aayar94.foodrecipes.ui
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -18,6 +17,7 @@ import com.aayar94.foodrecipes.ui.instructions.InstructionsFragment
 import com.aayar94.foodrecipes.ui.overview.OverviewFragment
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -61,13 +61,13 @@ class DetailsActivity : AppCompatActivity() {
         resultBundle.putParcelable("recipeBundle", args.result)
 
         val adapter = PagerAdapter(
-            resultBundle, fragments, titles, supportFragmentManager
+            resultBundle, fragments, this
         )
-
         binding.viewPager.adapter = adapter
-        binding.tabLayout.setupWithViewPager(binding.viewPager)
-
-        setupTabIcons(iconsList)
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            tab.text = titles[position]
+            tab.setIcon(iconsList[position])
+        }.attach()
 
         setContentView(binding.root)
     }
@@ -148,17 +148,4 @@ class DetailsActivity : AppCompatActivity() {
         item.icon?.setTint(ContextCompat.getColor(this, color))
     }
 
-    private fun setupTabIcons(iconsList: ArrayList<Int>) {
-        with(binding.tabLayout) {
-            for (i in 0 until iconsList.size) {
-               getTabAt(i)?.setIcon(iconsList[i])
-              getTabAt(i)?.icon?.setTint(
-                    MaterialColors.getColor(
-                        binding.root,
-                        com.google.android.material.R.attr.colorOnSurface
-                    )
-                )
-            }
-        }
-    }
 }
