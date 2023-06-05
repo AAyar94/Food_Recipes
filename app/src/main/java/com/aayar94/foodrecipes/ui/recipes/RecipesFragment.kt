@@ -31,7 +31,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class RecipesFragment : Fragment(), SearchView.OnQueryTextListener{
+class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
     private var mBinding: FragmentRecipesBinding? = null
     private val binding get() = mBinding!!
     private val args by navArgs<RecipesFragmentArgs>()
@@ -63,7 +63,7 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener{
             recipesViewModel.backOnline = it
         }
 
-        lifecycleScope.launch {
+        lifecycleScope.launchWhenStarted {
             networkStateListener = NetworkStateListener()
             networkStateListener.checkNetworkAvailable(requireContext()).collect { status ->
                 Log.d("Network Status", status.toString())
@@ -172,6 +172,7 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener{
                     val foodRecipe = response.data
                     foodRecipe?.let { adapter.setData(it) }
                 }
+
                 is NetworkResult.Error -> {
                     hideShimmerEffect()
                     loadDataFromCache()
@@ -181,6 +182,7 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener{
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+
                 is NetworkResult.Loading -> {
                     showShimmerEffect()
                 }
