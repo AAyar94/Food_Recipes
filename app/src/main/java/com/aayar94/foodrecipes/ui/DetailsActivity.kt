@@ -67,7 +67,10 @@ class DetailsActivity : AppCompatActivity() {
         val adapter = PagerAdapter(
             resultBundle, fragments, this
         )
-        binding.viewPager.adapter = adapter
+        binding.viewPager.isUserInputEnabled = false
+        binding.viewPager.apply {
+            this.adapter = adapter
+        }
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = titles[position]
             tab.setIcon(iconsList[position])
