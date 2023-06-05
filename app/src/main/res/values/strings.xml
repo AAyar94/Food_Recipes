@@ -55,4 +55,6 @@
     <string name="delete_all">Delete all</string>
     <string name="loaded_from_cache">Loaded from cache</string>
     <string name="share">Share</string>
+    <string name="cancel">Cancel</string>
+    <string name="do_you_want_to_delete_all_saved_recipes">Do you want to delete all saved recipes?</string>
 </resources>

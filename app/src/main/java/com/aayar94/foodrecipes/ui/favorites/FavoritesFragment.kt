@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aayar94.foodrecipes.R
 import com.aayar94.foodrecipes.databinding.FragmentFavoritesBinding
 import com.aayar94.foodrecipes.ui.MainViewModel
-import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -57,17 +57,27 @@ class FavoritesFragment : Fragment() {
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                val builder = MaterialAlertDialogBuilder(requireContext())
+                builder.setIcon(R.drawable.ic_delete)
+                builder.setTitle(getString(R.string.delete_all))
+                builder.setMessage(getString(R.string.do_you_want_to_delete_all_saved_recipes))
+                builder.setPositiveButton(
+                    getString(R.string.okay)
+                ) { _, _ ->
+                    mainViewModel.deleteAllFavoriteRecipes()
+                }
+                builder.setNegativeButton(
+                    getString(R.string.cancel)
+                ) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                builder.show()
+
                 mainViewModel.deleteAllFavoriteRecipes()
-                showSnackbar()
+
                 return true
             }
         })
-    }
-
-    private fun showSnackbar() {
-        Snackbar.make(binding.root, "Deleted all saved recipes", Snackbar.LENGTH_SHORT).show()
-        TODO()
-        /**     MATERİAL ALERT DIALOG       */
     }
 
     private fun setupRecyclerView(recyclerView: RecyclerView) {
