@@ -21,12 +21,17 @@ import com.aayar94.foodrecipes.utils.Constants.Companion.PREFERENCES_MEAL_TYPE_I
 import com.aayar94.foodrecipes.utils.Constants.Companion.PREFERENCES_NAME
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityRetainedScoped
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-@ActivityRetainedScoped
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
+    name = PREFERENCES_NAME
+)
+
+@ViewModelScoped
 class DataStoreRepository @Inject constructor(@ApplicationContext private val context: Context) {
 
 
@@ -39,10 +44,7 @@ class DataStoreRepository @Inject constructor(@ApplicationContext private val co
         val landingFinished = booleanPreferencesKey(PREFERENCES_LANDING_FINISHED)
     }
 
-    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
-        name = PREFERENCES_NAME
-    )
-
+    private val dataStore: DataStore<Preferences> = context.dataStore
     suspend fun saveBackOnline(backOnline: Boolean) {
         context.dataStore.edit { preferences ->
             preferences[PreferenceKeys.backOnline] = backOnline
