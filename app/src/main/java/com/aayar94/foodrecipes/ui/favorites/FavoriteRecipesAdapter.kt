@@ -64,6 +64,8 @@ class FavoriteRecipesAdapter(
         val currentRecipe = favoriteRecipes[position]
         holder.bind(currentRecipe)
 
+        saveItemsStateOnScroll(currentRecipe, holder)
+
         /**     Single Click Listener       * */
         holder.itemView.findViewById<ConstraintLayout>(R.id.favoriteRecipesRowLayout)
             .setOnClickListener {
@@ -87,10 +89,34 @@ class FavoriteRecipesAdapter(
                     applySelection(holder, currentRecipe)
                     true
                 } else {
-                    applySelection(holder,currentRecipe)
+                    applySelection(holder, currentRecipe)
                     true
                 }
             }
+    }
+
+    fun saveItemsStateOnScroll(currentRecipe: FavoritesEntity, holder: MyViewHolder) {
+        if (selectedRecipes.contains(currentRecipe)) {
+            changeRecipeStyle(
+                holder, MaterialColors.getColor(
+                    holder.itemView,
+                    com.google.android.material.R.attr.colorPrimaryContainer
+                ), MaterialColors.getColor(
+                    holder.itemView,
+                    com.google.android.material.R.attr.colorOnPrimaryContainer
+                )
+            )
+        } else {
+            changeRecipeStyle(
+                holder, MaterialColors.getColor(
+                    holder.itemView,
+                    com.google.android.material.R.attr.colorSurface
+                ), MaterialColors.getColor(
+                    holder.itemView,
+                    com.google.android.material.R.attr.colorPrimary
+                )
+            )
+        }
     }
 
     private fun applySelection(holder: MyViewHolder, currentRecipe: FavoritesEntity) {
@@ -120,6 +146,7 @@ class FavoriteRecipesAdapter(
             applyActionModeTitle()
         }
     }
+
 
     private fun applyActionModeTitle() {
         when (selectedRecipes.size) {
