@@ -9,14 +9,14 @@
         android:id="@+id/recipesFragment"
         android:name="com.aayar94.foodrecipes.ui.recipes.RecipesFragment"
         android:label="@string/recipes"
-        tools:layout="@layout/fragment_recipes" >
+        tools:layout="@layout/fragment_recipes">
         <action
             android:id="@+id/action_recipesFragment_to_recipesBottomSheet"
             app:destination="@id/recipesBottomSheet" />
         <argument
             android:name="backFromBottomSheet"
-            app:argType="boolean"
-            android:defaultValue="false" />
+            android:defaultValue="false"
+            app:argType="boolean" />
         <action
             android:id="@+id/action_recipesFragment_to_detailsActivity"
             app:destination="@id/detailsActivity" />
@@ -25,7 +25,7 @@
         android:id="@+id/favoritesFragment"
         android:name="com.aayar94.foodrecipes.ui.favorites.FavoritesFragment"
         android:label="@string/favorites"
-        tools:layout="@layout/fragment_favorites" >
+        tools:layout="@layout/fragment_favorites">
         <action
             android:id="@+id/action_favoritesFragment_to_detailsActivity"
             app:destination="@id/detailsActivity" />
@@ -38,7 +38,7 @@
     <dialog
         android:id="@+id/recipesBottomSheet"
         android:name="com.aayar94.foodrecipes.ui.recipes.bottom_sheet.RecipesBottomSheet"
-        android:label="RecipesBottomSheet" >
+        android:label="RecipesBottomSheet">
         <action
             android:id="@+id/action_recipesBottomSheet_to_recipesFragment"
             app:destination="@id/recipesFragment"
@@ -49,7 +49,7 @@
         android:id="@+id/detailsActivity"
         android:name="com.aayar94.foodrecipes.ui.DetailsActivity"
         android:label="@string/details"
-        tools:layout="@layout/activity_details" >
+        tools:layout="@layout/activity_details">
         <argument
             android:name="result"
             app:argType="com.aayar94.foodrecipes.model.Result" />
@@ -57,22 +57,25 @@
     <fragment
         android:id="@+id/onBoardingFragment"
         android:name="com.aayar94.foodrecipes.ui.onboarding.OnBoardingFragment"
-        android:label="OnBoardingFragment" >
+        android:label="OnBoardingFragment">
         <action
             android:id="@+id/action_onBoardingFragment_to_recipesFragment"
-            app:destination="@id/recipesFragment" />
+            app:destination="@id/recipesFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/onBoardingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.aayar94.foodrecipes.ui.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_onBoardingFragment"
             app:destination="@id/onBoardingFragment"
             app:launchSingleTop="true"
             app:popUpTo="@id/splashFragment"
-            app:popUpToInclusive="true"  />
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_recipesFragment"
             app:destination="@id/recipesFragment"

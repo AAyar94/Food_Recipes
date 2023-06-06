@@ -49,9 +49,9 @@ class MainActivity : AppCompatActivity() {
                 else -> binding.bottomNavBar.visibility = View.VISIBLE
             }
             when (destination.id) {
-                R.id.splashFragment -> actionBar?.hide()
-                R.id.onBoardingFragment -> actionBar?.hide()
-                else -> actionBar?.show()
+                R.id.splashFragment -> supportActionBar?.hide()
+                R.id.onBoardingFragment -> supportActionBar?.hide()
+                else -> supportActionBar?.show()
             }
         }
     }
