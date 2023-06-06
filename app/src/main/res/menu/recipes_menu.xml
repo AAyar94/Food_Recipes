@@ -8,4 +8,8 @@
         android:title="@string/search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="ifRoom" />
+    <item android:id="@+id/infoAboutAppButton"
+        android:icon="@drawable/ic_info"
+        android:title="@string/info_about_this_app"
+        app:showAsAction="never"/>
 </menu>

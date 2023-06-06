@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.recipesFragment, R.id.favoritesFragment, R.id.foodJokeFragment
             )
         )
+
         binding.bottomNavBar.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
@@ -48,8 +49,8 @@ class MainActivity : AppCompatActivity() {
                 else -> binding.bottomNavBar.visibility = View.VISIBLE
             }
             when (destination.id) {
+                R.id.splashFragment -> actionBar?.hide()
                 R.id.onBoardingFragment -> actionBar?.hide()
-
                 else -> actionBar?.show()
             }
         }

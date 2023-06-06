@@ -15,17 +15,18 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aayar94.foodrecipes.R
+import com.aayar94.foodrecipes.data.local.LocalDataSource
 import com.aayar94.foodrecipes.databinding.FragmentRecipesBinding
 import com.aayar94.foodrecipes.ui.MainViewModel
 import com.aayar94.foodrecipes.utils.NetworkResult
 import com.aayar94.foodrecipes.utils.NetworkStateListener
 import com.aayar94.foodrecipes.utils.observeOnce
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.elevation.SurfaceColors
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -101,6 +102,17 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 when (menuItem.itemId) {
                     android.R.id.home -> requireActivity().onBackPressed()
+                    R.id.infoAboutAppButton -> {
+                        val builder = MaterialAlertDialogBuilder(requireContext())
+                        builder.setTitle(getString(R.string.about_this_app))
+                        builder.setMessage(getString(R.string.this_app_uses_spoonacular_api_service))
+                        builder.setNeutralButton(
+                            R.string.okay
+                        ) { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        builder.show()
+                    }
                 }
                 return true
             }

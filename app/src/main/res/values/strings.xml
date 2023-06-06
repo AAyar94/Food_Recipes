@@ -57,4 +57,7 @@
     <string name="share">Share</string>
     <string name="cancel">Cancel</string>
     <string name="do_you_want_to_delete_all_saved_recipes">Do you want to delete all saved recipes?</string>
+    <string name="info_about_this_app">Info About this app</string>
+    <string name="about_this_app">About this app</string>
+    <string name="this_app_uses_spoonacular_api_service">This app uses spoonacular API service</string>
 </resources>
