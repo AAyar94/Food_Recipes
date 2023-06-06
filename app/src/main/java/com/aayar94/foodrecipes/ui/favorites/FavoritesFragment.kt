@@ -11,6 +11,7 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aayar94.foodrecipes.R
@@ -58,25 +59,57 @@ class FavoritesFragment : Fragment() {
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                val builder = MaterialAlertDialogBuilder(requireContext())
-                val view = DeleteAllAlertDialogBinding.inflate(layoutInflater)
-                builder.setView(view.root)
-                view.dialogTitle.text = getString(R.string.delete_all)
-                view.dialogMessage.text =
-                    getString(R.string.do_you_want_to_delete_all_saved_recipes)
-                val dialog = builder.create()
-                view.dialogCancelButton.setOnClickListener {
-                    dialog.dismiss()
-                }
-                view.dialogDeleteAllButton.setOnClickListener {
-                    mainViewModel.deleteAllFavoriteRecipes()
-                    dialog.dismiss()
-                }
-                dialog.show()
+                if (menuItem.itemId == R.id.deleteAllFavoriteRecipes) {
+                    val builder = MaterialAlertDialogBuilder(requireContext())
+                    val view = DeleteAllAlertDialogBinding.inflate(layoutInflater)
+                    builder.setView(view.root)
+                    view.dialogTitle.text = getString(R.string.delete_all)
+                    view.dialogMessage.text =
+                        getString(R.string.do_you_want_to_delete_all_saved_recipes)
+                    val dialog = builder.create()
+                    view.dialogCancelButton.setOnClickListener {
+                        dialog.dismiss()
+                    }
+                    view.dialogDeleteAllButton.setOnClickListener {
+                        mainViewModel.deleteAllFavoriteRecipes()
+                        dialog.dismiss()
+                    }
+                    dialog.show()
 
+                }
                 return true
             }
-        })
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+        /*val menuHost: MenuHost = requireActivity()
+        val menuProvider = object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.favorites_fragment_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                when(menuItem.itemId) {
+                    R.id.deleteAllFavoriteRecipes -> {
+                        val builder = MaterialAlertDialogBuilder(requireContext())
+                        val view = DeleteAllAlertDialogBinding.inflate(layoutInflater)
+                        builder.setView(view.root)
+                        view.dialogTitle.text = getString(R.string.delete_all)
+                        view.dialogMessage.text =
+                            getString(R.string.do_you_want_to_delete_all_saved_recipes)
+                        val dialog = builder.create()
+                        view.dialogCancelButton.setOnClickListener {
+                            dialog.dismiss()
+                        }
+                        view.dialogDeleteAllButton.setOnClickListener {
+                            mainViewModel.deleteAllFavoriteRecipes()
+                            dialog.dismiss()
+                        }
+                        dialog.show()
+                    }
+                }
+                return true
+            }*/
+
     }
 
     private fun setupRecyclerView(recyclerView: RecyclerView) {
