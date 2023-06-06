@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
             }
             when (destination.id) {
                 R.id.onBoardingFragment -> actionBar?.hide()
-                R.id.splashFragment -> actionBar?.hide()
 
                 else -> actionBar?.show()
             }

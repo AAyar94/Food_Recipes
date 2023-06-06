@@ -216,33 +216,18 @@
         app:layout_constraintStart_toEndOf="@+id/dairyfree_imageView"
         app:layout_constraintTop_toTopOf="@+id/dairyfree_imageView" />
 
-    <ScrollView
-        android:id="@+id/scrollView2"
+
+    <TextView
+        android:id="@+id/sumaryTextView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
         android:textColor="?attr/colorOnBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dairyfree_textView">
+        app:layout_constraintTop_toBottomOf="@id/vegan_textView"
+        tools:text="@tools:sample/lorem/random" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/sumaryTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="?attr/colorOnBackground"
-                tools:text="@tools:sample/lorem/random" />
-        </LinearLayout>
-    </ScrollView>
 </androidx.constraintlayout.motion.widget.MotionLayout>

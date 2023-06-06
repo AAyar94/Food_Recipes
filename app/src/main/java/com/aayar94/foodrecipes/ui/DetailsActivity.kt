@@ -37,11 +37,10 @@ class DetailsActivity : AppCompatActivity() {
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setSupportActionBar(binding.toolbar)
         binding.toolbar.setTitleTextColor(
-            ContextCompat.getColor(
-                this, R.color.lightGray
-            )
+            MaterialColors.getColor(binding.root, com.google.android.material.R.attr.colorOnSurface)
         )
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         statusBarColorSetter()
 
@@ -118,7 +117,8 @@ class DetailsActivity : AppCompatActivity() {
                 savedRecipeId = savedRecipe.id
                 recipeSaved = true
             } ?: changeMenuItemColor(
-                menuItem, R.color.lightGray
+                menuItem,
+                R.color.dark
             )
         }
     }
@@ -159,11 +159,16 @@ class DetailsActivity : AppCompatActivity() {
         item.icon?.setTint(ContextCompat.getColor(this, color))
     }
 
+    override fun onStop() {
+        super.onStop()
+        changeMenuItemColor(
+            menuItem,
+            R.color.dark
+        )
+    }
+
     override fun onDestroy() {
         super.onDestroy()
-        changeMenuItemColor(
-            menuItem, R.color.lightGray
-        )
     }
 
 }
