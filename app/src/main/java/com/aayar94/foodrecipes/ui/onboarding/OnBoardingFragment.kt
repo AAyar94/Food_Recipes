@@ -20,21 +20,9 @@ import kotlinx.coroutines.launch
 class OnBoardingFragment : Fragment() {
     private var mBinding: FragmentOnboardingBinding? = null
     private val binding get() = mBinding!!
-    private val viewModel: OnBoardingViewModel by viewModels()
 
     override fun onStart() {
         super.onStart()
-        var isLandingFinished = false
-        lifecycleScope.launch {
-            viewModel.readLandingFinished.collect { value ->
-                isLandingFinished = value
-            }
-        }
-        if (isLandingFinished){
-            val action =
-                OnBoardingFragmentDirections.actionOnBoardingFragmentToRecipesFragment()
-            findNavController().navigate(action)
-        }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -44,10 +44,13 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.onBoardingFragment -> binding.bottomNavBar.visibility = View.GONE
+                R.id.splashFragment -> binding.bottomNavBar.visibility=View.GONE
                 else -> binding.bottomNavBar.visibility = View.VISIBLE
             }
             when (destination.id) {
                 R.id.onBoardingFragment -> actionBar?.hide()
+                R.id.splashFragment -> actionBar?.hide()
+
                 else -> actionBar?.show()
             }
         }
