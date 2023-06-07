@@ -1,8 +1,10 @@
 # Food_Recipes
 
+I build this app with [Stevdza-San](https://github.com/stevdza-san) 's [Modern Food Recipes App](https://www.udemy.com/course/modern-food-recipes-app-android-development-with-kotlin/) Udemy course and tried to add Material Desing 3 and my knowledge
+
 ![Screenshot](https://redwerk.com/wp-content/uploads/2019/11/cover_Kotlin.png)
 
-Food Recipes app; **Dagger Hilt**, **Data Binding**, **DataStore**,**ROOM** **Coroutines**, **Lifecycle**, **LiveData**, **ViewModel**, **Retrofit**, **Coil** based on **MVVM** Architecture.
+Food Recipes app; **Dagger Hilt**, **Data Binding**, **DataStore**,**ROOM**, **Coroutines**, **Lifecycle**, **LiveData**, **ViewModel**, **Retrofit**, **Coil** based on **MVVM** Architecture.
 
 Food Recipes from : [Spoonacular API](https://spoonacular.com/food-api)
 
