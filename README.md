@@ -39,8 +39,8 @@ FOOD_RECIPES_API_KEY=COPY_YOUR_API_KEY_HERE
 
 ## Android 📱 Application Screens 📸
 
-<img src="https://raw.githubusercontent.com/AAyar94/Food_Recipes/master/Screenshots/Mockup1.png" />
-<img src="https://raw.githubusercontent.com/AAyar94/Food_Recipes/master/Screenshots/Mockup2.png" />
+<img src="https://raw.githubusercontent.com/AAyar94/Food_Recipes/master/screenshots/Mockup1.png" />
+<img src="https://raw.githubusercontent.com/AAyar94/Food_Recipes/master/screenshots/Mockup2.png" />
 
 ## License ℹ️
 ```
